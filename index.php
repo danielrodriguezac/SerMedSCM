@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Aplication, Company</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Intranet">
     <meta name="author" content="Daniel Rodriguez(danielrodriguezac@gmail.com)">
@@ -31,7 +31,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -39,17 +39,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="./index.html">Bootstrap</a>
+          <a class="brand" href="./index.html">SerMedSCM</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="#"><i class="icon-home"></i>  Login</a></li>
+              <li><a href="#"><i class="icon-pencil"></i>  Morbilidad</a></li>
+              <li><a href="#"><i class="icon-user"></i>  Personal</a></li>
+              <li><a href="#"><i class="icon-signal"></i>  Estadisticas</a></li>
             </ul>
-            <form class="navbar-form pull-right" action="parapito.com">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
+            <form class="navbar-form pull-right" action="users/login" method="post">
+              <input name="username" class="span2" type="text" placeholder="Email o Usuario">
+              <input name="password" class="span2" type="password" placeholder="Contraseña">
+              <button type="submit" class="btn">Iniciar Sesion</button>
             </form>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,18 +60,108 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <div class="well">
-              <ul class="nav nav-list">
-                <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
-                <li class="nav-header">List header</li>
+          <div >
+              <ul class="nav nav-tabs nav-stacked affix span2">
+                <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
                 <li><a href="#"><i class="icon-book"></i> Library</a></li>
                 <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
-                <li class="divider"></li>
                 <li><a href="#"><i class="i"></i> Misc</a></li>
               </ul>
           </div>
         </div>
         <div class="span10">
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: 40%;"></div>
+          </div>
+          <div class="page-header">
+            <h1>Descriptor de Pagina</h1>
+          </div>
+          <h2 id="headings">Headings</h2>
+          <p>PLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+              <caption><h1>Pito</h1></caption>
+              <thead>
+                <tr>
+                  <th>Table header 1</th>
+                  <th>Table Header 2</th>
+                  <th>Table header 1</th>
+                  <th>Table Header 2</th>
+                  <th>Table header 1</th>
+                  <th>Table Header 2</th>
+                  <th>Table header 1</th>
+                  <th>Table Header 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                </tr>
+                <tr class="success">
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td><span class="badge badge-important">6</span></td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                </tr>
+                <tr class="error">
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                </tr>
+                <tr class="warning">
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td><span class="label label-success">Success</span></td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn btn-mini">Action</button>
+                      <button class="btn dropdown-toggle btn-mini" data-toggle="dropdown">
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#"><i class="icon-book"></i> Library</a></li>
+                        <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+                      </ul>
+                     </div>
+                   </td>
+                </tr>
+                <tr class="info">
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td>table content 2</td>
+                  <td>table content 1</td>
+                  <td><span class="label label-success">Success</span></td>
+                </tr>
+              </tbody>
+            </table>
           <div class="well well-large">
              <table class="table table-striped table-bordered table-hover table-condensed">
               <caption><h1>Pito</h1></caption>
