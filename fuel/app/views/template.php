@@ -59,12 +59,8 @@
           </a>
           <a class="brand" href="./">SERMEDSCM</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
               <?php echo $topnavbar ?>
-            </ul>
-              <div class="pull-right">
                 <?php echo $userinfo ?>
-              </div>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -90,7 +86,7 @@
       <hr>
 
       <footer>
-        <p>Servicios de Corrugados Maracay C.A. &copy; Venezuela 2012</p>
+        <p>Servicios de Corrugados Maracay C.A. &copy; Venezuela 2012 <small class="pull-right">Powered by <a href="http://fuelphp.com">Fuel</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> Stats: {exec_time}s - {mem_usage}MB.</small></p>
       </footer>
     </div> <!-- /container -->
 

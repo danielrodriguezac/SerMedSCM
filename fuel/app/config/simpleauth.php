@@ -68,6 +68,7 @@ return array(
 	 */
 	'roles' => array(
                 'admin' => TRUE,
+                'doctor' => array('statistics' => array('listmodule')),
 		/**
 		 * Examples
 		 * ---

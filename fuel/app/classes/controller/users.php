@@ -3,23 +3,20 @@ class Controller_Users extends Controller_Template
 {
     public function before()
     {
-        parent::before(); // Without this line, templating won't work!
+        parent::before();
         $this->template->title = 'Usuarios';
-        $this->template->topnavbar = '2';
-        $this->template->userinfo = '3';
+        $this->template->topnavbar = ViewModel::forge('topnavbar');
+        $this->template->userinfo = ViewModel::forge('userinfo');
         $this->template->sidenavbar = '4';
     }
-
-    /**
-     * Make after() compatible with Controller_Template by adding $response as a parameter
-     */
+    
     public function after($response)
     {
         $response = parent::after($response); // not needed if you create your own response object
 
-        // do stuff $title $topnavbar $userinfo $sidenavbar $maincontent   <----------------------------
+        // $topnavbar $userinfo $sidenavbar $maincontent   <----------------------------
 
-        return $response; // make sure after() returns the response object
+        return $response;
     }
 
     public function action_index()
@@ -39,7 +36,7 @@ class Controller_Users extends Controller_Template
             $auth = Auth::instance();
             if ($auth->login())
             {
-                Response::redirect('success_page');
+                Response::redirect('users');
             }
             else
             {
