@@ -65,7 +65,7 @@ class View_Topnavbar extends ViewModel
                 {
                     $tag_array_1 = array();
                     $tag_array_2 = array('href' => Uri::create('inpsasel'));
-                    $tag_array_3 = array('class' => 'icon-pencil');
+                    $tag_array_3 = array('class' => 'icon-upload');
 
                     if($actualsegment == 'inpsasel')
                     {

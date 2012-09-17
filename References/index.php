@@ -8,13 +8,13 @@
     <meta name="author" content="Daniel Rodriguez(danielrodriguezac@gmail.com)">
 
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../public/assets/css/bootstrap.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../public/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -47,6 +47,16 @@
               <li><a href="#"><i class="icon-user"></i>  Personal</a></li>
               <li><a href="#"><i class="icon-signal"></i>  Estadisticas</a></li>
               <li><a href="#"><i class="icon-upload"></i>  INPSASEL</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-home"></i>  Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-home"></i>  Action</a></li>
+                <li><a href="#"><i class="icon-home"></i>  Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
             </ul>
             <!-- <form class="navbar-form pull-right" action="users/login" method="post">
               <input name="username" class="span2" type="text" placeholder="Email o Usuario">
@@ -57,16 +67,86 @@
         </div>
       </div>
     </div>
-
+<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                        </ul>
+                      </li>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <ul class="nav nav-tabs nav-stacked affix span2">
+          <ul class="nav nav-tabs nav-stacked">
             <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
             <li><a href="#"><i class="icon-book"></i> Library</a></li>
             <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
             <li><a href="#"><i class="i"></i> Misc</a></li>
           </ul>
+          <br><br><br><br><br><br><br><br><br><br><br>
+          <div class="well">
+            <ul class="nav nav-tabs nav-stacked">
+              <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
+              <li><a href="#"><i class="icon-book"></i> Library</a></li>
+              <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+              <li><a href="#"><i class="i"></i> Misc</a></li>
+            </ul>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br><br>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="nav-header">List header</li>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Library</a></li>
+              <li><a href="#">Applications</a></li>
+              <li class="nav-header">Another list header</li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Help</a></li>
+          </ul>
+          <br><br><br><br><br><br><br><br><br><br><br>
+          <div class="well">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="nav-header">List header</li>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Library</a></li>
+              <li><a href="#">Applications</a></li>
+              <li class="nav-header">Another list header</li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br><br>
+          <ul class="nav nav-list">
+              <li class="nav-header">List header</li>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Library</a></li>
+              <li><a href="#">Applications</a></li>
+              <li class="nav-header">Another list header</li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Help</a></li>
+          </ul>
+          <br><br><br><br><br><br><br><br><br><br><br>
+          <div class="well">
+            <ul class="nav nav-list">
+              <li class="nav-header">List header</li>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Library</a></li>
+              <li><a href="#">Applications</a></li>
+              <li class="nav-header">Another list header</li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Help</a></li>
+              </ul>
+          </div>
         </div>
         <div class="span10">
           <div class="progress progress-striped active">
@@ -522,7 +602,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-1.8.1.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="../public/assets/js/jquery-1.8.1.js"></script>
+    <script src="../public/assets/js/bootstrap.js"></script>
   </body>
 </html>

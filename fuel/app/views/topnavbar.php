@@ -1,3 +1,1 @@
-<ul class="nav">
-        <?php echo $libar ?>  
-</ul>
+<?php echo $libar ?>  

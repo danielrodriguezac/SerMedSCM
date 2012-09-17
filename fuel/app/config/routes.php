@@ -5,5 +5,5 @@ return array(
 	
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
 	'welcome/pito' => 'welcome/pito',
-	'users' => 'users',
+	//'users' => 'users',
 );

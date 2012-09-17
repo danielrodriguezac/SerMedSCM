@@ -5,9 +5,10 @@ class Controller_Users extends Controller_Template
     {
         parent::before();
         $this->template->title = 'Usuarios';
+        $this->template->motmod = 'Creación, edición y permisología de los usuarios que acceden al sistema';
         $this->template->topnavbar = ViewModel::forge('topnavbar');
         $this->template->userinfo = ViewModel::forge('userinfo');
-        $this->template->sidenavbar = '4';
+        $this->template->sidenavbar = ViewModel::forge('sidenavbar');
     }
     
     public function after($response)
@@ -31,6 +32,7 @@ class Controller_Users extends Controller_Template
     public function action_login()
     {
         $data = array();
+        $this->template->title .= ' - Login';
         if (Input::post())
         {
             $auth = Auth::instance();
@@ -51,8 +53,7 @@ class Controller_Users extends Controller_Template
     {
         $auth = Auth::instance();
         if($auth->logout()){
-            $this->template->title = 'Example Page';
-            $this->template->maincontent = 'si';
+            Response::redirect('users/login');
         }  else {
             $this->template->title = 'Example Page';
             $this->template->maincontent = 'no';

@@ -59,25 +59,28 @@
           </a>
           <a class="brand" href="./">SERMEDSCM</a>
           <div class="nav-collapse collapse">
+            <ul class="nav">
               <?php echo $topnavbar ?>
-                <?php echo $userinfo ?>
+            </ul>
+            <ul class="nav pull-right">
+              <?php echo $userinfo ?>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
       
-    <header class="jumbotron">
-        <div class="container">
+    <header>
+        <div class="hero-unit">
             <h1><?php echo 'Módulo ' . $title ?></h1>
+            <p><?php echo $motmod ?></p>
         </div>
     </header>
 
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <ul class="nav nav-tabs nav-stacked affix span2">
             <?php echo $sidenavbar ?>
-          </ul>
         </div>
         <div class="span10">
           <?php echo $maincontent ?>
