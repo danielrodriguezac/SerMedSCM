@@ -6,9 +6,11 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=localhost;dbname=fuel_prod',
-			'username'   => 'fuel_app',
-			'password'   => 'super_secret_password',
+                        'hostname'       => 'localhost',
+                        'port'           => '3306',
+                        'database'       => 'sermedscm',
+                        'username'       => 'root',
+                        'password'       => '123456789',
 		),
 	),
 );

@@ -21,13 +21,6 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <!-- Le fav and touch icons
-    <link rel="shortcut icon" href="ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">$title $topnavbar $userinfo $sidenavbar $maincontent -->
   </head>
 
   <body>
@@ -53,11 +46,9 @@
       </div>
     </div>
       
-    <header>
-        <div class="hero-unit">
+    <header class="hero-unit">
             <h1><?php echo 'Módulo ' . $title ?></h1>
             <p><?php echo $motmod ?></p>
-        </div>
     </header>
 
     <div class="container-fluid">
@@ -69,12 +60,12 @@
           <?php echo $maincontent ?>
         </div>
       </div>
-      <hr>
-
-      <footer>
-        <p>Servicios de Corrugados Maracay C.A. &copy; Venezuela 2012 <small class="pull-right">Powered by <a href="http://fuelphp.com">Fuel</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> Stats: {exec_time}s - {mem_usage}MB.</small></p>
-      </footer>
     </div> <!-- /container -->
+    
+    <hr>
+    <footer>
+        <p>Servicios de Corrugados Maracay C.A. &copy; Venezuela 2012 <small class="pull-right">Powered by <a href="http://fuelphp.com">Fuel</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> Stats: {exec_time}s - {mem_usage}MB.</small></p>
+    </footer>
 
     <!-- Le javascript
     ================================================== -->
