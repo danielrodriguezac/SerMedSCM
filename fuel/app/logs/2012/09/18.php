@@ -1,0 +1,53 @@
+<?php defined('COREPATH') or exit('No direct script access allowed'); ?>
+
+Warning - 2012-09-18 01:09:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:09:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-18 01:09:34 --> 8 - Undefined variable: usernameurl in C:\wamp\www\SERMEDSCM\fuel\app\views\userinfo.php on line 2
+Warning - 2012-09-18 01:17:16 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:17:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:17:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:17:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-18 01:17:35 --> 8 - Undefined variable: usernameurl in C:\wamp\www\SERMEDSCM\fuel\app\views\userinfo.php on line 2
+Warning - 2012-09-18 01:19:10 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:19:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:19:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:33 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:57 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:38:57 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 01:43:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:00:38 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:06 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:56 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:21:56 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:22:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:22:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:26:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:26:30 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:28:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:28:40 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:28:40 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:28:40 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:28:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:28:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:55:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:55:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 02:55:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:30 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:30 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-18 03:22:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.

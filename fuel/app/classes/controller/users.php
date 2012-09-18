@@ -5,7 +5,7 @@ class Controller_Users extends Controller_Template
     {
         parent::before();
         $this->template->title = 'Usuarios';
-        $this->template->motmod = 'Creación, edición y permisología de los usuarios que acceden al sistema';
+        $this->template->motmod = 'Creación, edición y permisología de los usuarios que acceden al sistema.';
         $this->template->topnavbar = ViewModel::forge('topnavbar');
         $this->template->userinfo = ViewModel::forge('userinfo');
         $this->template->sidenavbar = ViewModel::forge('sidenavbar');
@@ -55,8 +55,8 @@ class Controller_Users extends Controller_Template
         if($auth->logout()){
             Response::redirect('users/login');
         }  else {
-            $this->template->title = 'Example Page';
-            $this->template->maincontent = 'no';
+            $this->template->title = 'Error';
+            $this->template->maincontent = 'Something went terribly wrong';
         }
     }
 }

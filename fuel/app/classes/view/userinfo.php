@@ -4,7 +4,8 @@ class View_Userinfo extends ViewModel
 	public function view()
 	{
             $auth = Auth::instance();
-            if($auth->check())
+            $this->isauth = $auth->check();
+            if($this->isauth)
             {
 //                $session = Session::instance(); the way of the instance
 //                $username = $session->get('username', 'Error');
@@ -16,13 +17,14 @@ class View_Userinfo extends ViewModel
 //                    $logouturl = '/users/logout';
 //                }
                 $username = Session::get('username', 'Error');
+                $this->usernameurl = Uri::create('users');
                 $this->username = $username;
-                $this->logouturl = Uri::create('users/logout');;
+                $this->logouturl = Uri::create('users/logout');
             }else
             {
                 $this->username = 'Inicie Sesión!';
-                $this->logouturl = '#';
+                $this->usernameurl = Uri::create('users/login');
             }
         }
 }
-// @TODO: needs a lot more work but this will do for the time beign
+// @TODO: only internal URIs and names nedd to be resolved
