@@ -14,6 +14,8 @@
         {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
+        .hero-unit{
+        }
     </style>
     <?php echo Asset::css('bootstrap-responsive.css'); ?>
 
@@ -45,18 +47,19 @@
         </div>
       </div>
     </div>
-      
     <header class="hero-unit">
             <h1><?php echo 'Módulo ' . $title ?></h1>
             <p><?php echo $motmod ?></p>
     </header>
-
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
             <?php echo $sidenavbar ?>
         </div>
         <div class="span10">
+            <div class="page-header">
+                <h1><?php echo $title ?></h1>
+            </div>
           <?php echo $maincontent ?>
         </div>
       </div>

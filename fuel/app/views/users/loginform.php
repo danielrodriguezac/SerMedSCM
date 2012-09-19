@@ -3,9 +3,9 @@
 </div>
 <form class="form-horizontal" action="login" method="post">
     <div class="control-group">
-        <label class="control-label" for="inputEmail">ID</label>
+        <label class="control-label">ID</label>
         <div class="controls">
-            <input name="username" type="text" id="inputEmail" placeholder="ó Email">
+            <input name="username" type="text" placeholder="ó Email">
         </div>
     </div>
     <div class="control-group">

@@ -31,8 +31,15 @@ class Controller_Users extends Controller_Template
     }
     public function action_login()
     {
-        $data = array();
         $this->template->title .= ' - Login';
+        $login_form = Fieldset::forge('login', array('form_attributes' => array('class' => 'form-horizontal')));
+        $validation = $login_form->validation();
+        $form = $login_form->form();
+
+        $form->add('username', 'ID', array('type' => 'text', 'class' => '', 'placeholder' => 'ó Email'),  array(array('required')));
+        $form->add('password', 'Contraseña', array('type' => 'password', 'class' => '', 'placeholder' => 'Contraseña'),  array(array('required')));
+        $form->add('submit', '', array('value' => 'Iniciar Sesión', 'type' => 'submit', 'class' => 'btn btn-primary'));
+
         if (Input::post())
         {
             $auth = Auth::instance();
@@ -42,11 +49,13 @@ class Controller_Users extends Controller_Template
             }
             else
             {
-                $this->template->maincontent = View::forge('users/loginform',$data);
+                $alertdiv = ViewModel::forge('alertdiv', 'error');
+                $alertdiv->set('alerttitle', 'Error');
+                $alertdiv->set('alertmessage', 'Combinación de ID/Contraseña incorrecta');
+                $this->template->set('maincontent', $alertdiv . $login_form, FALSE);
             }
         }else{
-        // Show the login form
-        $this->template->maincontent = View::forge('users/loginform',$data);
+            $this->template->set('maincontent', $login_form, FALSE);
         }
     }
     public function action_logout()
