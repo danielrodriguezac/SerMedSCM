@@ -40,7 +40,7 @@ class Controller_Users extends Controller_Template
         $form->add('password', 'Contraseña', array('type' => 'password', 'class' => '', 'placeholder' => 'Contraseña'),  array(array('required')));
         $form->add('submit', '', array('value' => 'Iniciar Sesión', 'type' => 'submit', 'class' => 'btn btn-primary'));
 
-        if (Input::post())
+        if ($validation->run())
         {
             $auth = Auth::instance();
             if ($auth->login())
@@ -52,11 +52,14 @@ class Controller_Users extends Controller_Template
                 $alertdiv = ViewModel::forge('alertdiv', 'error');
                 $alertdiv->set('alerttitle', 'Error');
                 $alertdiv->set('alertmessage', 'Combinación de ID/Contraseña incorrecta');
+                $login_form->repopulate();
                 $this->template->set('maincontent', $alertdiv . $login_form, FALSE);
             }
         }else{
+            $login_form->repopulate();
             $this->template->set('maincontent', $login_form, FALSE);
         }
+        
     }
     public function action_logout()
     {
