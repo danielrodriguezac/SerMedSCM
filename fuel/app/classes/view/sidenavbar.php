@@ -10,7 +10,7 @@ class View_Sidenavbar extends ViewModel
             switch($actualmodule)
             {
                 case 'users':
-                    $commanlist = array('', 'login', 'create', 'edit', 'delete', 'logout');
+                    $commanlist = array('' => 'Usuarios', 'login' => 'Iniciar Sesión', 'create' => 'Crear Usuario', 'edit' => 'Editar Usuario', 'delete' => 'Eliminar Usuario', 'logout' => 'Salir');
                 break;
                 case 'consult':
                     $commanlist = array('', 'test');

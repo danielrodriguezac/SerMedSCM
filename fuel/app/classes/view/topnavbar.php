@@ -10,70 +10,79 @@ class View_Topnavbar extends ViewModel
 	public function view()
 	{
             $urisegments = Uri::segments();
-            $actualsegment = $urisegments[0];
+            $actualmodule = $urisegments[0];
             $auth = Auth::instance();
-            $all_li = '';
-            $tag_array_1 = array();
-            $tag_array_2 = array('href' => Uri::create('users'));
-            $tag_array_3 = array('class' => 'icon-home');
-            
-            if($actualsegment == 'users')
+            $modulesarray = array();
+//            $tag_array_1 = array();
+//            $tag_array_2 = array('href' => Uri::create('users'));
+//            $tag_array_3 = array('class' => 'icon-home');
+            $module = 'users';
+            $temparray['liclass'] = '';
+            $temparray['href'] = Uri::create($module);
+            $temparray['iclass'] = 'icon-home';
+            $temparray['showname'] = 'Usuarios';
+            if($actualmodule == $module)
             {
-                $tag_array_1['class'] = 'active';
+                $temparray['liclass'] = ' active';
             }
-            $all_li .= html_tag('li', $tag_array_1, html_tag('a', $tag_array_2, html_tag('i', $tag_array_3, '').'  Usuarios'));
+            $modulesarray[$module] = $temparray;
             
             if ($auth->check())
             {
                 if($auth->has_access('consult.listmodule'))
                 {
-                    $tag_array_1 = array();
-                    $tag_array_2 = array('href' => Uri::create('consult'));
-                    $tag_array_3 = array('class' => 'icon-pencil');
-
-                    if($actualsegment == 'consult')
+                    $module = 'consult';
+                    $temparray['liclass'] = '';
+                    $temparray['href'] = Uri::create($module);
+                    $temparray['iclass'] = 'icon-pencil';
+                    $temparray['showname'] = 'Consulta';
+                    if($actualmodule == $module)
                     {
-                        $tag_array_1['class'] = 'active';
+                        $temparray['liclass'] = ' active';
                     }
-                    $all_li .= "\n" . html_tag('li', $tag_array_1, html_tag('a', $tag_array_2, html_tag('i', $tag_array_3, '').'  Consulta'));
+                    $modulesarray[$module] = $temparray;
                 }
                 if($auth->has_access('personal.listmodule'))
                 {
-                    $tag_array_1 = array();
-                    $tag_array_2 = array('href' => Uri::create('personal'));
-                    $tag_array_3 = array('class' => 'icon-user');
-
-                    if($actualsegment == 'personal')
+                    $module = 'personal';
+                    $temparray['liclass'] = '';
+                    $temparray['href'] = Uri::create($module);
+                    $temparray['iclass'] = 'icon-user';
+                    $temparray['showname'] = 'Personal';
+                    if($actualmodule == $module)
                     {
-                        $tag_array_1['class'] = 'active';
+                        $temparray['liclass'] = ' active';
                     }
-                    $all_li .= "\n" . html_tag('li', $tag_array_1, html_tag('a', $tag_array_2, html_tag('i', $tag_array_3, '').'  Personal'));
+                    $modulesarray[$module] = $temparray;
                 }
                 if($auth->has_access('statistics.listmodule'))
                 {
-                    $tag_array_1 = array();
-                    $tag_array_2 = array('href' => Uri::create('statistics'));
-                    $tag_array_3 = array('class' => 'icon-signal');
-
-                    if($actualsegment == 'statistics')
+                    $module = 'statistics';
+                    $temparray['liclass'] = '';
+                    $temparray['href'] = Uri::create($module);
+                    $temparray['iclass'] = 'icon-signal';
+                    $temparray['showname'] = 'Estadisticas';
+                    if($actualmodule == $module)
                     {
-                        $tag_array_1['class'] = 'active';
+                        $temparray['liclass'] = ' active';
                     }
-                    $all_li .= "\n" . html_tag('li', $tag_array_1, html_tag('a', $tag_array_2, html_tag('i', $tag_array_3, '').'  Estadisticas'));
+                    $modulesarray[$module] = $temparray;
                 }
                 if($auth->has_access('inpsasel.listmodule'))
                 {
-                    $tag_array_1 = array();
-                    $tag_array_2 = array('href' => Uri::create('inpsasel'));
-                    $tag_array_3 = array('class' => 'icon-upload');
-
-                    if($actualsegment == 'inpsasel')
+                    $module = 'inpsasel';
+                    $temparray['liclass'] = '';
+                    $temparray['href'] = Uri::create($module);
+                    $temparray['iclass'] = 'icon-upload';
+                    $temparray['showname'] = 'INPSASEL';
+                    if($actualmodule == $module)
                     {
-                        $tag_array_1['class'] = 'active';
+                        $temparray['liclass'] = ' active';
                     }
-                    $all_li .= "\n" . html_tag('li', $tag_array_1, html_tag('a', $tag_array_2, html_tag('i', $tag_array_3, '').'  INPSASEL'));
+                    $modulesarray[$module] = $temparray;
                 }
             }
+            $all_li = var_dump($modulesarray);
             $this->set('libar', $all_li, FALSE);
 	}
 }

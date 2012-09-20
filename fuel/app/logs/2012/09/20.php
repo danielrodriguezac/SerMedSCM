@@ -46,3 +46,31 @@ Warning - 2012-09-20 15:45:23 --> Fuel\Core\Fuel::init - The configured locale e
 Warning - 2012-09-20 15:45:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 Warning - 2012-09-20 15:45:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 Warning - 2012-09-20 15:45:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 19:07:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 19:08:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 19:11:14 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 19:50:20 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-20 19:50:21 --> 8 - Undefined variable: tag_array_2 in C:\xampp\htdocs\SERMEDSCM\fuel\app\classes\view\topnavbar.php on line 24
+Warning - 2012-09-20 20:21:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-20 20:21:35 --> Parsing Error - syntax error, unexpected '[' in C:\xampp\htdocs\SERMEDSCM\fuel\app\classes\view\topnavbar.php on line 15
+Warning - 2012-09-20 20:22:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:23:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-20 20:23:03 --> Parsing Error - syntax error, unexpected '[' in C:\xampp\htdocs\SERMEDSCM\fuel\app\classes\view\topnavbar.php on line 28
+Warning - 2012-09-20 20:23:33 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:27:23 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-20 20:27:24 --> Parsing Error - syntax error, unexpected '[' in C:\xampp\htdocs\SERMEDSCM\fuel\app\classes\view\topnavbar.php on line 28
+Warning - 2012-09-20 20:28:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:28:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:28:39 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:33:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:33:56 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:34:18 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:34:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:34:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Error - 2012-09-20 20:34:19 --> 8 - Undefined variable: all_li in C:\xampp\htdocs\SERMEDSCM\fuel\app\classes\view\topnavbar.php on line 63
+Warning - 2012-09-20 20:35:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:46:30 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:49:13 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:53:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:55:09 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+Warning - 2012-09-20 20:56:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
