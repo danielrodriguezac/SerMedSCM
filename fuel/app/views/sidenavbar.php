@@ -1,6 +1,8 @@
 <ul class="nav nav-tabs nav-stacked">
-  <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
-  <li><a href="#"><i class="icon-book"></i> Library</a></li>
-  <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
-  <li><a href="#"><i class="i"></i> Misc</a></li>
+<?php
+    foreach ($commandarray as $command => $propertiesarray):
+?>
+<li class="<?php echo $propertiesarray['liclass'] ?>"><a href="<?php echo Uri::create(Uri::segment(1, 'users') . '/' . $command); ?>"><i class="<?php echo $propertiesarray['iclass'] ?>"></i>  <?php echo $propertiesarray['showname'] ?></a></li>
+
+<?php endforeach; ?>
 </ul>

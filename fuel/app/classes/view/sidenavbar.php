@@ -3,30 +3,53 @@ class View_Sidenavbar extends ViewModel
 {
 	public function view()
 	{
-            $urisegments = Uri::segments();
-            $actualmodule = $urisegments[0];
-            $actualcommand = $urisegments[1];
+            $actualmodule = Uri::segment(1, 'users');
+            $actualcommand = Uri::segment(2, '');
             $auth = Auth::instance();
             switch($actualmodule)
             {
                 case 'users':
-                    $commanlist = array('' => 'Usuarios', 'login' => 'Iniciar Sesión', 'create' => 'Crear Usuario', 'edit' => 'Editar Usuario', 'delete' => 'Eliminar Usuario', 'logout' => 'Salir');
+                    $commandlist = array(
+                                        '' => array('showname' => 'Usuarios', 'iclass' => 'icon-home'),
+                                        'create' => array('showname' => 'Crear usuario', 'iclass' => 'icon-plus'),
+                                        'edit' => array('showname' => 'Editar usuario', 'iclass' => 'icon-edit'),
+                                        'delete' => array('showname' => 'Eliminar usuario', 'iclass' => 'icon-trash'),
+                                        'logout' => array('showname' => 'Salir', 'iclass' => 'icon-off'),
+                                    );
+                    if($auth->check())
+                    {
+                        foreach ($commandlist as $command => $propertiesarray)
+                        {
+                            if($auth->has_access($actualmodule . '.' . $command))
+                            {
+                                $temparray = array(
+                                                'liclass' => ($command == $actualcommand) ? ' active' : '',
+                                                'iclass' => $propertiesarray['iclass'],
+                                                'showname' => $propertiesarray['showname'],
+                                            );
+                            }
+                            $commandarray[$command] = $temparray;
+                        }
+                    }else
+                    {
+                        $commandarray['login'] = array('liclass' => ' active', 'showname' => 'Iniciar Sesión',  'iclass' => 'icon-home');  
+                    }
                 break;
                 case 'consult':
-                    $commanlist = array('', 'test');
+                    $commandlist = array('', 'test');
                 break;
                 case 'personal':
-                    $commanlist = array('', 'history');
+                    $commandlist = array('', 'history');
                 break;
                 case 'statistics':
-                    $commanlist = array('');
+                    $commandlist = array('');
                 break;
                 case 'inpsasel':
-                    $commanlist = array('');
+                    $commandlist = array('');
                 break;
                 default:
-                    
                 break;
             }
+            $this->commandarray = $commandarray;
         }
 }

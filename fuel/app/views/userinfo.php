@@ -5,9 +5,7 @@
         if ($isauth)
             {
     ?>
-      <li><a href="#"><i class="icon-user"></i>  Usuarios</a></li>
-      <li><a href="#"><i class="icon-home"></i>  Another action</a></li>
-      <li><a href="#">Something else here</a></li>
+      <li><a href="<?php echo $abouturl ?>"><i class="icon-globe"></i>  Acerca de...</a></li>
       <li class="divider"></li>
       <li><a href="<?php echo $logouturl ?>"><i class="icon-off"></i> Salir</a></li>
     <?php

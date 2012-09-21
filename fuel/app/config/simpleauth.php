@@ -67,8 +67,9 @@ return array(
 	 * Roles as name => array(location => rights)
 	 */
 	'roles' => array(
-                'admin' => TRUE,
+                'admin' => array('users' => array('listmodule' , 'edit', 'delete')),
                 'doctor' => array('statistics' => array('listmodule')),
+                'hola' => array('users' => array('listmodule' , 'edit', 'delete')),
 		/**
 		 * Examples
 		 * ---
