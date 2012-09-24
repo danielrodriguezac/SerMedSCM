@@ -67,16 +67,10 @@ return array(
 	 * Roles as name => array(location => rights)
 	 */
 	'roles' => array(
-                'admin' =>  array(
-//                                'users' => array('listmodule' , 'create', 'edit', 'delete'),
-                                'consult' => array('listmodule'),
-                                'personal' => array('listmodule'),
-                                'statistics' => array('listmodule'),
-                                'inpsasel' => array('listmodule'),
-                            ),
+                'admin' =>  TRUE,
                 'doctor' => array('statistics' => array('listmodule')),
                 'hola' => array(
-                                'users' => array('listmodule' , 'create', 'edit', 'delete'),
+                                'users' => array('listmodule' , '', 'create', 'edit', 'delete', 'logout'),
                                 'consult' => array('listmodule'),
                                 'personal' => array('listmodule'),
                                 'statistics' => array('listmodule'),

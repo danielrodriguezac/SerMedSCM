@@ -73,7 +73,6 @@ class Controller_Users extends Controller_Template
         }else{
             $this->template->set('maincontent', $login_form, FALSE);
         }
-        
     }
     public function action_logout()
     {

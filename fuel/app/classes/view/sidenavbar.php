@@ -37,12 +37,28 @@ class View_Sidenavbar extends ViewModel
                                                     'liclass' => ' active',
                                                     'iclass' => 'icon-home',
                                                     'url' => Uri::create('users/logout'),
-                                                    'showname' => 'Iniciar Sesión',
+                                                    'showname' => 'Iniciar sesión',
                                                 );  
                     }
                 break;
                 case 'consult':
-                    $commandlist = array('', 'test');
+                    $commandlist = array(
+                                        '' => array('showname' => 'Consulta', 'iclass' => 'icon-pencil'),
+                                        'tests' => array('showname' => 'Registrar exámenes', 'iclass' => 'icon-plus'),
+                                    );
+                    foreach($commandlist as $command => $propertiesarray)
+                    {
+                        if($auth->has_access($actualmodule . '.' . $command))
+                        {
+                            $temparray = array(
+                                            'liclass' => ($command == $actualcommand) ? ' active' : '',
+                                            'iclass' => $propertiesarray['iclass'],
+                                            'url' => Uri::create($actualmodule . '/' . $command),
+                                            'showname' => $propertiesarray['showname'],
+                                        );
+                            $commandarray[$command] = $temparray;
+                        }
+                    }
                 break;
                 case 'personal':
                     $commandlist = array('', 'history');

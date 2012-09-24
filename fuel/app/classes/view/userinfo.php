@@ -23,7 +23,7 @@ class View_Userinfo extends ViewModel
                 $this->abouturl = Uri::create('about');
             }else
             {
-                $this->username = 'Inicie Sesión!';
+                $this->username = 'Inicie sesión!';
                 $this->usernameurl = Uri::create('users/login');
             }
         }

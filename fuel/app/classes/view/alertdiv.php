@@ -13,7 +13,7 @@ class View_Alertdiv extends ViewModel
 	{
             $this->addclasses = 'alert-success';
         }
-        	public function error()
+        public function error()
 	{
             $this->addclasses = 'alert-error';
         }

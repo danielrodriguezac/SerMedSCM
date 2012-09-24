@@ -71,3 +71,4 @@ class View_Topnavbar extends ViewModel
             $this->modulesarray = $modulesarray;
 	}
 }
+//@TODO optimize this, can be done with an array and a foreach
