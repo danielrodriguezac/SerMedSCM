@@ -67,9 +67,21 @@ return array(
 	 * Roles as name => array(location => rights)
 	 */
 	'roles' => array(
-                'admin' => array('users' => array('listmodule' , 'edit', 'delete')),
+                'admin' =>  array(
+//                                'users' => array('listmodule' , 'create', 'edit', 'delete'),
+                                'consult' => array('listmodule'),
+                                'personal' => array('listmodule'),
+                                'statistics' => array('listmodule'),
+                                'inpsasel' => array('listmodule'),
+                            ),
                 'doctor' => array('statistics' => array('listmodule')),
-                'hola' => array('users' => array('listmodule' , 'edit', 'delete')),
+                'hola' => array(
+                                'users' => array('listmodule' , 'create', 'edit', 'delete'),
+                                'consult' => array('listmodule'),
+                                'personal' => array('listmodule'),
+                                'statistics' => array('listmodule'),
+                                'inpsasel' => array('listmodule'),
+                            ),
 		/**
 		 * Examples
 		 * ---

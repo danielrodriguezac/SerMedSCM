@@ -18,21 +18,27 @@ class View_Sidenavbar extends ViewModel
                                     );
                     if($auth->check())
                     {
-                        foreach ($commandlist as $command => $propertiesarray)
+                        foreach($commandlist as $command => $propertiesarray)
                         {
                             if($auth->has_access($actualmodule . '.' . $command))
                             {
                                 $temparray = array(
                                                 'liclass' => ($command == $actualcommand) ? ' active' : '',
                                                 'iclass' => $propertiesarray['iclass'],
+                                                'url' => Uri::create($actualmodule . '/' . $command),
                                                 'showname' => $propertiesarray['showname'],
                                             );
+                                $commandarray[$command] = $temparray;
                             }
-                            $commandarray[$command] = $temparray;
                         }
                     }else
                     {
-                        $commandarray['login'] = array('liclass' => ' active', 'showname' => 'Iniciar Sesión',  'iclass' => 'icon-home');  
+                        $commandarray['login'] = array(
+                                                    'liclass' => ' active',
+                                                    'iclass' => 'icon-home',
+                                                    'url' => Uri::create('users/logout'),
+                                                    'showname' => 'Iniciar Sesión',
+                                                );  
                     }
                 break;
                 case 'consult':
@@ -50,6 +56,20 @@ class View_Sidenavbar extends ViewModel
                 default:
                 break;
             }
-            $this->commandarray = $commandarray;
+            if(!empty($commandarray))
+            {
+                $this->commandarray = $commandarray;
+            }
+            else
+            {
+                $this->commandarray = array(
+                                            'logout' => array(
+                                                            'liclass' => '',
+                                                            'iclass' => 'icon-remove',
+                                                            'url' => Uri::create('users/logout'),
+                                                            'showname' => 'Permisos insuficientes',
+                                                        ),
+                                    );
+            }
         }
 }
