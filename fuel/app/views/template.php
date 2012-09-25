@@ -9,14 +9,7 @@
 
     <!-- Styles -->
     <?php echo Asset::css('bootstrap.css'); ?>
-    <style>
-        body 
-        {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        .hero-unit{
-        }
-    </style>
+    <?php echo Asset::css('base.css'); ?>
     <?php echo Asset::css('bootstrap-responsive.css'); ?>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -35,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="./">SERMEDSCM</a>
+          <a class="brand hidden-phone" href="./">SERMEDSCM</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <?php echo $topnavbar ?>
@@ -47,7 +40,7 @@
         </div>
       </div>
     </div>
-    <header class="hero-unit">
+    <header class="hero-unit visible-desktop">
             <h1><?php echo 'Módulo ' . $title ?></h1>
             <p><?php echo $motmod ?></p>
     </header>

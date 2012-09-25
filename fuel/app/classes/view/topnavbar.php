@@ -55,12 +55,12 @@ class View_Topnavbar extends ViewModel
                     }
                     $modulesarray[$module] = $temparray;
                 }
-                if($auth->has_access('inpsasel.listmodule'))
+                if($auth->has_access('phonebook.listmodule'))
                 {
-                    $module = 'inpsasel';
+                    $module = 'phonebook';
                     $temparray['liclass'] = '';
-                    $temparray['iclass'] = 'icon-upload';
-                    $temparray['showname'] = 'INPSASEL';
+                    $temparray['iclass'] = 'icon-book';
+                    $temparray['showname'] = 'Directorio';
                     if($actualmodule == $module)
                     {
                         $temparray['liclass'] = ' active';

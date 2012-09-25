@@ -74,7 +74,7 @@ return array(
                                 'consult' => array('listmodule'),
                                 'personal' => array('listmodule'),
                                 'statistics' => array('listmodule'),
-                                'inpsasel' => array('listmodule'),
+                                'phonebook' => array('listmodule'),
                             ),
 		/**
 		 * Examples
