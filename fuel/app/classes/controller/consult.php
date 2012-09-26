@@ -30,8 +30,54 @@ class Controller_Consult extends Controller_Template
 
         $form->add('ci', 'Cédula de paciente', array('type' => 'text', 'class' => '', 'placeholder' => 'ej. 5866966'),  array(array('required')));
         $form->add('submit', '', array('value' => 'Buscar', 'type' => 'submit', 'class' => 'btn btn-primary'));
-        
-        $this->template->set('maincontent', $consult_form, FALSE);
+        if (Input::post())
+        {
+            $employees = Model_Employees::find()->where('ci', Input::post('ci'));
+            if($employees->count() == 1)
+            {
+                $datos = $employees->get_one();
+                Session::set('idpaciente', $datos->id);
+//                $this->template->maincontent = Session::get('idpaciente');
+                Response::redirect('consult/stage2');
+            }else
+            {
+                $alertdiv = ViewModel::forge('alertdiv', 'error');
+                $alertdiv->set('alerttitle', 'Error');
+                $alertdiv->set('alertmessage', 'Empleado no registrado en el Sistema. Clic <a href="' . Uri::create('personal/register'). '"> Aqui</a> para registrar uno nuevo');
+                $this->template->set('maincontent', $alertdiv . $consult_form, FALSE);
+            }
+        }else
+        {
+            $this->template->set('maincontent', $consult_form, FALSE);
+        }
+    }
+    public function action_stage2()
+    {
+        if(Session::get('idpaciente', FALSE) != FALSE)
+        {
+            
+            $idpaciente = Session::get('idpaciente', FALSE);
+            $this->template->maincontent = $idpaciente;
+            $stage2_form = Fieldset::forge('consult', array('form_attributes' => array('class' => 'form-horizontal')));
+            $form = $stage2_form->form();
+
+            $form->add('departamento', 'Departamento', array('type' => 'text', 'class' => '', 'placeholder' => ''),  array(array('required')));
+            $form->add('motivo_consulta', 'Motivo de la consulta', array('type' => 'textarea', 'class' => '', 'placeholder' => ''),  array(array('required')));
+            $form->add('consulta_especial', '¿Es una consulta especial?', array('type' => 'radio', 'class' => '', 'placeholder' => '', ),  array(array('required')));
+            $form->add('submit', '', array('value' => 'Buscar', 'type' => 'submit', 'class' => 'btn btn-primary'));
+//            $form     = View::Forge('stage2');
+//            $fieldset = Fieldset::forge()->add_model('Model_Employee');
+//            $form     = $fieldset->form();
+//            $form->add('submit', '', array('type' => 'submit', 'value' => 'Add', 'class' => 'btn medium primary'));
+//            if($fieldset->validation()->run() == true)
+//            {
+//                
+//            }
+            $this->template->set('maincontent', $form, FALSE);
+        }else
+        {
+            Response::redirect('consult/');
+        }
     }
     public function action_tests()
     {
@@ -39,3 +85,4 @@ class Controller_Consult extends Controller_Template
         $this->template->maincontent = 'Bienvenido, Usuario';
     }
 }
+//`ci`, `nacionalidad`, `nombres`, `apellidos`, `estado_civil`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_contratacion`, `fecha_registro`, `id_usuarc
