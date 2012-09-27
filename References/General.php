@@ -28,3 +28,4 @@ That'll stop the specific value being encoded.
  * and open the template in the editor.
  */
 ?>
+RapiBurrito: you can render individual fields of a fieldset using: echo $fieldset->field('fieldname')->build();

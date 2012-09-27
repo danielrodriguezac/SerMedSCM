@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <title><?php echo $title . ' - Servicio Medico S.C.M. C.A.' ?></title>
@@ -19,7 +19,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -40,19 +39,19 @@
         </div>
       </div>
     </div>
-    <header class="hero-unit visible-desktop">
+<!--    <header class="hero-unit visible-desktop">
             <h1><?php echo 'Módulo ' . $title ?></h1>
             <p><?php echo $motmod ?></p>
-    </header>
+    </header>-->
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
             <?php echo $sidenavbar ?>
         </div>
         <div class="span10">
-            <div class="page-header">
+<!--            <div class="page-header">
                 <h1><?php echo $title ?></h1>
-            </div>
+            </div>-->
           <?php echo $maincontent ?>
         </div>
       </div>

@@ -28,7 +28,7 @@ class Controller_Consult extends Controller_Template
         $consult_form = Fieldset::forge('consult', array('form_attributes' => array('class' => 'form-horizontal')));
         $form = $consult_form->form();
 
-        $form->add('ci', 'Cédula de paciente', array('type' => 'text', 'class' => '', 'placeholder' => 'ej. 5866966'),  array(array('required')));
+        $form->add('ci', 'Cédula de paciente', array('type' => 'text', 'class' => '', 'placeholder' => 'ej. 5866966', 'class' => 'search-query', 'autofocus' => 'autofocus'),  array(array('required')));
         $form->add('submit', '', array('value' => 'Buscar', 'type' => 'submit', 'class' => 'btn btn-primary'));
         if (Input::post())
         {
@@ -55,9 +55,19 @@ class Controller_Consult extends Controller_Template
     {
         if(Session::get('idpaciente', FALSE) != FALSE)
         {
-            
             $idpaciente = Session::get('idpaciente', FALSE);
-            $this->template->maincontent = $idpaciente;
+            
+            $employees = Model_Employees::find()->where('id', $idpaciente);
+            $data = $employees->get_one();
+            
+            $basicinfo =ViewModel::Forge('consult/basicinfo');
+            $basicinfo->set('userqueryresult', $data);
+            
+            $stage2view = View::Forge('consult/stage2');
+            $stage2view->set('basicinfo', $basicinfo);
+            $this->template->maincontent = $stage2view;
+//            $data->nombres . $data->apellidos;
+            
             $stage2_form = Fieldset::forge('consult', array('form_attributes' => array('class' => 'form-horizontal')));
             $form = $stage2_form->form();
 
@@ -73,7 +83,7 @@ class Controller_Consult extends Controller_Template
 //            {
 //                
 //            }
-            $this->template->set('maincontent', $form, FALSE);
+            //$this->template->set('maincontent', $form, FALSE);
         }else
         {
             Response::redirect('consult/');

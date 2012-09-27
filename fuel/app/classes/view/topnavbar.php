@@ -10,7 +10,7 @@ class View_Topnavbar extends ViewModel
             $module = 'users';
             $temparray['liclass'] = '';
             $temparray['iclass'] = 'icon-home';
-            $temparray['showname'] = 'Usuarios';
+            $temparray['showname'] = '';
             if($actualmodule == $module)
             {
                 $temparray['liclass'] = ' active';
