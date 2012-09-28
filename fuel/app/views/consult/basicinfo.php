@@ -23,10 +23,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <p><span class="label label-info">Fecha de Nacimiento:</span>  <?php echo $fecha_nacimiento; ?></p>
+                        <p><span class="label label-info">Fecha de Nacimiento:</span>  <?php echo $fecha_nacimiento; ?><b>(<?php echo $edad; ?>)</b></p>
                     </td>
                     <td>
-                        <p><span class="label label-info">Fecha de Registro:</span>  <?php echo $fecha_registro; ?></p>
+                        <p><span class="label label-info">Fecha de Registro:</span>  <?php echo $fecha_registro; ?><b>(<?php echo $tiempo_en_empresa; ?>)</b></p>
                     </td>
                     <td>
                         <p><span class="label">Pre-Empleo</span></p>

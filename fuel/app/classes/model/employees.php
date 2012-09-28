@@ -32,6 +32,13 @@ class Model_Employees extends Orm\Model
             'form' => array('type' => 'text', 'placeholder' => ''),
             'default' => '',
         ),
+        'genero' => array(
+            'data_type' => 'varchar',
+            'label' => 'Género',
+            'validation' => array('required'),
+            'form' => array('type' => 'text', 'placeholder' => ''),
+            'default' => '',
+        ),
         'estado_civil' => array(
             'data_type' => 'varchar',
             'label' => 'Estado civil',
