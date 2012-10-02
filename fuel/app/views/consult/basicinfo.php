@@ -1,12 +1,12 @@
 <div class="page-header">
-    <h1><?php echo $nombres . ' ' . $apellidos ?></h1>
+    <h1><?php echo $nombres . ' ' . $apellidos ?>  <span class="label<?php echo $edctagclass ?>"><?php echo $estado_contratacion ?></span></h1>
 </div>
 <div class="row-fluid">
-    <div class="span8">
+    <div class="span12">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Datos Personales</th>
+                    <th colspan="3" class="text-info">Datos Personales</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,21 +20,29 @@
                     <td>
                         <p><span class="label label-info">Estado Civil:</span>  <?php echo $estado_civil; ?></p>
                     </td>
+<!--                    <td rowspan="5">
+                        <?php //echo Asset::img('retrato.png', array('class' => 'img-polaroid')); ?>
+                    </td>-->
                 </tr>
                 <tr>
                     <td>
                         <p><span class="label label-info">Fecha de Nacimiento:</span>  <?php echo $fecha_nacimiento; ?><b>(<?php echo $edad; ?>)</b></p>
                     </td>
                     <td>
-                        <p><span class="label label-info">Fecha de Registro:</span>  <?php echo $fecha_registro; ?><b>(<?php echo $tiempo_en_empresa; ?>)</b></p>
+                        <p><span class="label label-info">Fecha de Registro:</span>  <?php echo $fecha_registro; ?><b>(<?php echo $tiempo_en_empresa; ?>)<-- remember to fix time_ago method to avoid extra years showing up</b></p>
                     </td>
                     <td>
-                        <p><span class="label">Pre-Empleo</span></p>
+                        <p><span class="label label-info">Genero:</span>  <?php echo $genero; ?></p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <p><span class="label label-info">Direccion:</span>  Turmero, Urb. La Mantuana, calle Don Humberto, Ca2efref2efrge2efref2efrges</p>
+                        <p><span class="label label-info">Lugar de Nacimiento:</span>  <?php echo $lugar_nacimiento; ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <p><span class="label label-info">Direccion:</span>  <?php echo $direccion; ?></p>
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +53,7 @@
             </tbody>
         </table>
     </div>
-    <div class="span3 offset1">
-        <?php echo Asset::img('retrato.png', array('class' => 'img-polaroid')); ?>
-    </div>
+<!--    <div class="span3 offset1">
+        <?php //echo $retratoimg; ?>
+    </div>-->
 </div>

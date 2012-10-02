@@ -43,7 +43,7 @@ class Controller_Consult extends Controller_Template
             {
                 $alertdiv = ViewModel::forge('alertdiv', 'error');
                 $alertdiv->set('alerttitle', 'Error');
-                $alertdiv->set('alertmessage', 'Empleado no registrado en el Sistema. Clic <a href="' . Uri::create('personal/register'). '"> Aqui</a> para registrar uno nuevo');
+                $alertdiv->set('alertmessage', 'Empleado no registrado en el Sistema. Dirijase a Personal para registrar uno nuevo.');
                 $this->template->set('maincontent', $alertdiv . $consult_form, FALSE);
             }
         }else
@@ -66,7 +66,6 @@ class Controller_Consult extends Controller_Template
             $stage2view = View::Forge('consult/stage2');
             $stage2view->set('basicinfo', $basicinfo);
             $this->template->maincontent = $stage2view;
-//            $data->nombres . $data->apellidos;
             
             $stage2_form = Fieldset::forge('consult', array('form_attributes' => array('class' => 'form-horizontal')));
             $form = $stage2_form->form();

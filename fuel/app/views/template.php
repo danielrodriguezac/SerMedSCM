@@ -67,5 +67,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <?php echo Asset::js('jquery-1.8.1.js'); ?>
     <?php echo Asset::js('bootstrap.js'); ?>
+    <?php echo Asset::js('script.consult.stage2.js'); ?>
   </body>
 </html>
