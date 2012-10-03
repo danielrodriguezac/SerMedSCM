@@ -67,6 +67,19 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <?php echo Asset::js('jquery-1.8.1.js'); ?>
     <?php echo Asset::js('bootstrap.js'); ?>
-    <?php echo Asset::js('script.consult.stage2.js'); ?>
+    <?php
+        $segments = Uri::segments();
+        $filename = 'script.';
+        foreach ($segments as $segment)
+        {
+            $filename .= $segment.'.';
+        }
+        $filename .= 'js';
+        $pito = Asset::find_file($filename, 'js','pages/');;
+        if (Asset::find_file($filename, 'js','pages/')) {
+            $location = 'pages/'.$filename; 
+            echo Asset::js($location);
+        }
+        ?>
   </body>
 </html>

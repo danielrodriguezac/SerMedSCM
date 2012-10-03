@@ -1,6 +1,6 @@
 <?php echo $basicinfo; ?>
 <div class="page-header">
-    <h2>Datos b&aacute;sicos de Consulta</h2>
+    <h2>Registro de ex&aacute;menes m&eacute;dicos<</h2>
 </div>
 <div class="row-fluid">
 <?php if(isset($errors))
@@ -13,7 +13,7 @@
             echo '</ul>';
         }
 ?>
-    <form class="" action="<?php echo Uri::create('consult/stage2'); ?>" method="post" autocomplete="off">
+    <form class="" action="<?php echo Uri::create('consult/tests'); ?>" method="post" autocomplete="off">
         <div class="span3">
             <div id="well_consulta_especial" class="well">
             <label class="text-info" for="departamento">Departamento</label>

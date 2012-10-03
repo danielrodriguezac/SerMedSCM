@@ -29,7 +29,7 @@
                         <p><span class="label label-info">Fecha de Nacimiento:</span>  <?php echo $fecha_nacimiento; ?><b>(<?php echo $edad; ?>)</b></p>
                     </td>
                     <td>
-                        <p><span class="label label-info">Fecha de Registro:</span>  <?php echo $fecha_registro; ?><b>(<?php echo $tiempo_en_empresa; ?>)<-- remember to fix time_ago method to avoid extra years showing up</b></p>
+                        <p><span class="label label-info">Fecha de Registro:</span>  <?php echo $fecha_registro; ?><b>(<?php echo $tiempo_en_empresa; ?>)<-- remember to fix time_ago method</b></p>
                     </td>
                     <td>
                         <p><span class="label label-info">Genero:</span>  <?php echo $genero; ?></p>

@@ -44,46 +44,75 @@ class Controller_Consult extends Controller_Template
                 $alertdiv = ViewModel::forge('alertdiv', 'error');
                 $alertdiv->set('alerttitle', 'Error');
                 $alertdiv->set('alertmessage', 'Empleado no registrado en el Sistema. Dirijase a Personal para registrar uno nuevo.');
-                $this->template->set('maincontent', $alertdiv . $consult_form, FALSE);
+                $this->template->set('maincontent', $alertdiv . $consult_form, false);
             }
         }else
         {
-            $this->template->set('maincontent', $consult_form, FALSE);
+            $this->template->set('maincontent', $consult_form, false);
         }
     }
     public function action_stage2()
     {
-        if(Session::get('idpaciente', FALSE) != FALSE)
+        if(Session::get('idpaciente', false) != false)
         {
-            $idpaciente = Session::get('idpaciente', FALSE);
+            $idpaciente = Session::get('idpaciente', false);
+            
+            $validation = Fuel\Core\Validation::forge('stage2validation');
+            $validation->add('departamento', 'Departamento')->add_rule('required');
+            $validation->add('motivo_consulta', 'Motivo de la Consulta')->add_rule('required');
+            $validation->add('tipo_consulta', 'Tipo de Consulta')->add_rule('required');
+            $validation->add('consulta_especial', '¿Es una consulta especial?')->add_rule('required');
+            $validation->add('ce_tipo', '¿Que tipo de consulta especial?');
+            $validation->add('ce_limitacion', '¿Existen limitaciones?');
+            $validation->add('ce_descripcion', 'Describa brevemente la limitacion');
+            $validation->add('examenes', '¿Trajo examenes para registrar?')->add_rule('required');
             
             $employees = Model_Employees::find()->where('id', $idpaciente);
             $data = $employees->get_one();
+
+            
+            $stage2view = View::Forge('consult/stage2');
+            
+            if($validation->run())
+            {
+                $dataset = $validation->validated();
+                Session::set('departamento', $dataset['departamento']);
+                Session::set('motivo_consulta', $dataset['motivo_consulta']);
+                Session::set('tipo_consulta', $dataset['tipo_consulta']);
+                Session::set('consulta_especial', $dataset['consulta_especial']);
+                if($dataset['consulta_especial'])
+                {
+                    Session::set('ce_tipo', $dataset['ce_tipo']);
+                    Session::set('ce_limitacion', $dataset['ce_limitacion']);
+                    if($dataset['ce_limitacion'])
+                    {
+                        Session::set('ce_descripcion', $dataset['ce_descripcion']);
+                    }
+                }
+                Session::set('examenes', $dataset['examenes']);
+                if($dataset['examenes'])
+                {
+                    Response::redirect('consult/tests');
+                }
+                else
+                {
+                    Response::redirect('consult/stage3');
+                }
+            }
+            else
+            {
+                $stage2view->set('errors', $validation->error());
+            }
             
             $basicinfo =ViewModel::Forge('consult/basicinfo');
             $basicinfo->set('userqueryresult', $data);
             
-            $stage2view = View::Forge('consult/stage2');
             $stage2view->set('basicinfo', $basicinfo);
             $this->template->maincontent = $stage2view;
             
-            $stage2_form = Fieldset::forge('consult', array('form_attributes' => array('class' => 'form-horizontal')));
-            $form = $stage2_form->form();
 
-            $form->add('departamento', 'Departamento', array('type' => 'text', 'class' => '', 'placeholder' => ''),  array(array('required')));
-            $form->add('motivo_consulta', 'Motivo de la consulta', array('type' => 'textarea', 'class' => '', 'placeholder' => ''),  array(array('required')));
-            $form->add('consulta_especial', '¿Es una consulta especial?', array('type' => 'radio', 'class' => '', 'placeholder' => '', ),  array(array('required')));
-            $form->add('submit', '', array('value' => 'Buscar', 'type' => 'submit', 'class' => 'btn btn-primary'));
-//            $form     = View::Forge('stage2');
-//            $fieldset = Fieldset::forge()->add_model('Model_Employee');
-//            $form     = $fieldset->form();
-//            $form->add('submit', '', array('type' => 'submit', 'value' => 'Add', 'class' => 'btn medium primary'));
-//            if($fieldset->validation()->run() == true)
-//            {
-//                
-//            }
-            //$this->template->set('maincontent', $form, FALSE);
-        }else
+        }
+        else
         {
             Response::redirect('consult/');
         }
@@ -91,6 +120,20 @@ class Controller_Consult extends Controller_Template
     public function action_tests()
     {
         $this->template->title = 'Pagina de Examenes';
+        echo 'departamento'.Session::get('departamento');
+        echo 'motivo'.Session::get('motivo_consulta');
+        echo 'tipo'.Session::get('tipo_consulta');
+        echo 'boolconsultaespecial'.Session::get('consulta_especial');
+        if(Session::get('consulta_especial'))
+        {
+            echo 'cetipo'.Session::get('ce_tipo');
+            echo 'boolcelimitacion'.Session::get('ce_limitacion');
+            if(Session::get('ce_limitacion'))
+            {
+                echo 'cedescripcion'.Session::get('ce_descripcion');
+            }
+        }
+        echo Session::get('examenes');
         $this->template->maincontent = 'Bienvenido, Usuario';
     }
 }
