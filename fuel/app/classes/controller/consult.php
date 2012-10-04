@@ -134,7 +134,22 @@ class Controller_Consult extends Controller_Template
             }
         }
         echo Session::get('examenes');
-        $this->template->maincontent = 'Bienvenido, Usuario';
+        
+        $idpaciente = Session::get('idpaciente', false);
+        
+        $employees = Model_Employees::find()->where('id', $idpaciente);
+        $data = $employees->get_one();
+        
+        $basicinfo =ViewModel::Forge('consult/basicinfo');
+        $basicinfo->set('userqueryresult', $data);
+
+        $testsview = View::Forge('consult/tests');
+        $testsview->set('basicinfo', $basicinfo);
+        
+        $dateclass = Date::time();
+        $testsview->fecha_hoy = $dateclass->format('ve');
+//        $testsview->fecha_hoy = time();
+        $this->template->maincontent = $testsview;
     }
 }
 //`ci`, `nacionalidad`, `nombres`, `apellidos`, `estado_civil`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_contratacion`, `fecha_registro`, `id_usuarc
