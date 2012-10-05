@@ -11,6 +11,7 @@
     <?php echo Asset::css('bootstrap.css'); ?>
     <?php echo Asset::css('base.css'); ?>
     <?php echo Asset::css('bootstrap-responsive.css'); ?>
+    <?php echo Asset::css('datepicker.css'); ?>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -67,6 +68,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <?php echo Asset::js('jquery-1.8.1.js'); ?>
     <?php echo Asset::js('bootstrap.js'); ?>
+    <?php echo Asset::js('bootstrap-datepicker.js'); ?>
+    <?php echo Asset::js('locales/bootstrap-datepicker.es.js'); ?>
     <?php
         $segments = Uri::segments();
         $filename = 'script.';

@@ -57,7 +57,7 @@ class Controller_Consult extends Controller_Template
         {
             $idpaciente = Session::get('idpaciente', false);
             
-            $validation = Fuel\Core\Validation::forge('stage2validation');
+            $validation = Validation::forge('stage2validation');
             $validation->add('departamento', 'Departamento')->add_rule('required');
             $validation->add('motivo_consulta', 'Motivo de la Consulta')->add_rule('required');
             $validation->add('tipo_consulta', 'Tipo de Consulta')->add_rule('required');
@@ -120,23 +120,60 @@ class Controller_Consult extends Controller_Template
     public function action_tests()
     {
         $this->template->title = 'Pagina de Examenes';
-        echo 'departamento'.Session::get('departamento');
-        echo 'motivo'.Session::get('motivo_consulta');
-        echo 'tipo'.Session::get('tipo_consulta');
-        echo 'boolconsultaespecial'.Session::get('consulta_especial');
-        if(Session::get('consulta_especial'))
+//        echo 'departamento'.Session::get('departamento');
+//        echo 'motivo'.Session::get('motivo_consulta');
+//        echo 'tipo'.Session::get('tipo_consulta');
+//        echo 'boolconsultaespecial'.Session::get('consulta_especial');
+//        if(Session::get('consulta_especial'))
+//        {
+//            echo 'cetipo'.Session::get('ce_tipo');
+//            echo 'boolcelimitacion'.Session::get('ce_limitacion');
+//            if(Session::get('ce_limitacion'))
+//            {
+//                echo 'cedescripcion'.Session::get('ce_descripcion');
+//            }
+//        }
+//        echo Session::get('examenes');
+        
+        print_r(Session::get());
+        extract(Session::get());
+        if(!isset($examenes) or ($examenes == 0))
         {
-            echo 'cetipo'.Session::get('ce_tipo');
-            echo 'boolcelimitacion'.Session::get('ce_limitacion');
-            if(Session::get('ce_limitacion'))
+            Response::redirect('consult/stage2');
+        }
+        $validation = Validation::forge('testsvalidation');
+        $validation->add('tipo', 'Tipo de exámen')->add_rule('required');
+        $validation->add('resultados', 'Resultados del exámen')->add_rule('required');
+        $validation->add('observaciones', 'Observaciones')->add_rule('required');
+        $validation->add('fecha', 'Fecha en que se realizó el exámen')->add_rule('required');
+        $validation->add('mas_examenes', '¿Reportar otro exámen?')->add_rule('required');
+        if($validation->run())
+        {
+            $dataset = $validation->validated();
+            $array_examen_actual = array(
+                                        'tipo'          => $dataset['tipo'],
+                                        'resultados'    => $dataset['resultados'],
+                                        'observaciones' => $dataset['observaciones'],
+                                        'fecha'         => $dataset['fecha'],
+            );
+            if(!isset($array_examenes))
             {
-                echo 'cedescripcion'.Session::get('ce_descripcion');
+               Session::set('array_examenes' , array(0 => $array_examen_actual)); 
+            }
+            else
+            {
+                $array_examenes[] = $array_examen_actual;
+                 Session::set('array_examenes' , $array_examenes);  
+            }
+            if(!$mas_examenes)
+            {
+                Response::redirect('consult/stage3');
             }
         }
-        echo Session::get('examenes');
-        
-        $idpaciente = Session::get('idpaciente', false);
-        
+        else 
+        {
+            $testsview->set('errors', $validation->error());
+        }
         $employees = Model_Employees::find()->where('id', $idpaciente);
         $data = $employees->get_one();
         
@@ -148,8 +185,8 @@ class Controller_Consult extends Controller_Template
         
         $dateclass = Date::time();
         $testsview->fecha_hoy = $dateclass->format('ve');
-//        $testsview->fecha_hoy = time();
+//        print_r(Date::create_from_string($testsview->fecha_hoy , "ve"));
         $this->template->maincontent = $testsview;
+
     }
 }
-//`ci`, `nacionalidad`, `nombres`, `apellidos`, `estado_civil`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_contratacion`, `fecha_registro`, `id_usuarc
