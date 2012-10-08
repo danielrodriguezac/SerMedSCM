@@ -15,7 +15,7 @@ class Model_Employees extends Orm\Model
         'nacionalidad' => array(
             'data_type' => 'varchar',
             'label' => 'Nacionalidad',
-            'form' => array('type' => 'select', 'options' => array('v' => 'V', 'e' => 'E')),
+            'form' => array('type' => 'select', 'options' => array('0' => 'V', '1' => 'E')),
             'validation' => array('required'),
         ),
         'nombres' => array(
@@ -42,7 +42,7 @@ class Model_Employees extends Orm\Model
         'estado_civil' => array(
             'data_type' => 'varchar',
             'label' => 'Estado civil',
-            'form' => array('type' => 'select', 'options' => array('s' => 'Soltero/a', 'c' => 'Casado/a', 'd' => 'Divorciado/a', 'v' => 'Viudo/a')),
+            'form' => array('type' => 'select', 'options' => array(0 => 'Soltero/a', 1 => 'Casado/a', 2 => 'Divorciado/a', 3 => 'Viudo/a')),
             'validation' => array('required'),
         ),
         'fecha_nacimiento' => array(
@@ -69,7 +69,7 @@ class Model_Employees extends Orm\Model
         'estado_contratacion' => array(
             'data_type' => 'varchar',
             'label' => 'Estado de contratacion',
-            'form' => array('type' => 'select', 'options' => array('0' => 'Pre-empleo', '1' => 'Empleado', '2' => 'Vacaciones', '3' => 'Egreso')),
+            'form' => array('type' => 'select', 'options' => array('0' => 'Pre-empleo', '1' => 'Empleado', '2' => 'Vacaciones', '3' => 'Egreso', '4' => 'Contratado')),
             'validation' => array('required'),
         ),
         'fecha_registro' => array(
@@ -81,9 +81,9 @@ class Model_Employees extends Orm\Model
         ),
         'id_usuario' => array(
             'data_type' => 'int',
-            'label' => 'Created At',
+            'label' => 'Usuario creador',
             'form' => array(
-                'type' => false, // this prevents this field from being rendered on a form
+                'type' => false,
             ),
         ),
     );

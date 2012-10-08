@@ -4,5 +4,6 @@ return array(
 	'_404_'   => 'welcome/404',    // The main 404 route
 	
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
-	//'users' => 'users',
+	'consult/session/:variable/:id' => 'consult/session',
+	'consult/session/:variable' => 'consult/session',
 );

@@ -109,8 +109,6 @@ class Controller_Consult extends Controller_Template
             
             $stage2view->set('basicinfo', $basicinfo);
             $this->template->maincontent = $stage2view;
-            
-
         }
         else
         {
@@ -119,74 +117,110 @@ class Controller_Consult extends Controller_Template
     }
     public function action_tests()
     {
-        $this->template->title = 'Pagina de Examenes';
-//        echo 'departamento'.Session::get('departamento');
-//        echo 'motivo'.Session::get('motivo_consulta');
-//        echo 'tipo'.Session::get('tipo_consulta');
-//        echo 'boolconsultaespecial'.Session::get('consulta_especial');
-//        if(Session::get('consulta_especial'))
-//        {
-//            echo 'cetipo'.Session::get('ce_tipo');
-//            echo 'boolcelimitacion'.Session::get('ce_limitacion');
-//            if(Session::get('ce_limitacion'))
-//            {
-//                echo 'cedescripcion'.Session::get('ce_descripcion');
-//            }
-//        }
-//        echo Session::get('examenes');
-        
+        $this->template->title = 'Página de Exámenes';
+
         print_r(Session::get());
         extract(Session::get());
+        
+//        echo Date::create_from_string($array_examenes[0]['fecha'] , "ve");
         if(!isset($examenes) or ($examenes == 0))
         {
             Response::redirect('consult/stage2');
         }
+        $testsview = View::Forge('consult/tests');
+        
         $validation = Validation::forge('testsvalidation');
-        $validation->add('tipo', 'Tipo de exámen')->add_rule('required');
-        $validation->add('resultados', 'Resultados del exámen')->add_rule('required');
-        $validation->add('observaciones', 'Observaciones')->add_rule('required');
-        $validation->add('fecha', 'Fecha en que se realizó el exámen')->add_rule('required');
-        $validation->add('mas_examenes', '¿Reportar otro exámen?')->add_rule('required');
-        if($validation->run())
+        $validation->add('tipo', 'Tipo de exámen')->add_rule('required')->add_rule('min_length', 2);
+        $validation->add('resultados', 'Resultados del exámen')->add_rule('required')->add_rule('min_length', 2);
+        $validation->add('observaciones', 'Observaciones')->add_rule('required')->add_rule('min_length', 4);
+        $validation->add('fecha', 'Fecha en que se realizó el exámen')
+                ->add_rule('required')
+                ->add_rule('match_pattern', '/((?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d])(?!.)/is');
+        $validation->add('mas_examenes', '¿Reportar otro exámen?')->add_rule('required')->add_rule('numeric_min', 0)->add_rule('numeric_max', 1);
+        if(Input::Post())
         {
-            $dataset = $validation->validated();
-            $array_examen_actual = array(
-                                        'tipo'          => $dataset['tipo'],
-                                        'resultados'    => $dataset['resultados'],
-                                        'observaciones' => $dataset['observaciones'],
-                                        'fecha'         => $dataset['fecha'],
-            );
-            if(!isset($array_examenes))
+            if($validation->run())
             {
-               Session::set('array_examenes' , array(0 => $array_examen_actual)); 
+                $dataset = $validation->validated();
+                $dataset['fecha'] = Date::create_from_string($dataset['fecha'] , "ve")->get_timestamp();
+                $dataset['fecha'] += 43200;
+                $array_examen_actual = array(
+                                            'tipo'          => $dataset['tipo'],
+                                            'resultados'    => $dataset['resultados'],
+                                            'observaciones' => $dataset['observaciones'],
+                                            'fecha'         => $dataset['fecha'],
+                );
+                if(!isset($array_examenes))
+                {
+                   Session::set('array_examenes' , array(0 => $array_examen_actual)); 
+                }
+                else
+                {
+                    $array_examenes[] = $array_examen_actual;
+                     Session::set('array_examenes' , $array_examenes);  
+                }
+                if(!$dataset['mas_examenes'])
+                {
+                    Response::redirect('consult/stage3');
+                }
             }
-            else
+            else 
             {
-                $array_examenes[] = $array_examen_actual;
-                 Session::set('array_examenes' , $array_examenes);  
+                $testsview->set('errors', $validation->error());
             }
-            if(!$mas_examenes)
-            {
-                Response::redirect('consult/stage3');
-            }
-        }
-        else 
-        {
-            $testsview->set('errors', $validation->error());
         }
         $employees = Model_Employees::find()->where('id', $idpaciente);
         $data = $employees->get_one();
         
-        $basicinfo =ViewModel::Forge('consult/basicinfo');
+        $basicinfo = ViewModel::Forge('consult/basicinfo');
         $basicinfo->set('userqueryresult', $data);
-
-        $testsview = View::Forge('consult/tests');
-        $testsview->set('basicinfo', $basicinfo);
         
+        if(isset($array_examenes))
+        {
+            $sessiontestsview = View::Forge('consult/sessiontests');
+            $sessiontestsview->set('sessiontests', $array_examenes);
+            $testsview->set('sessiontests', $sessiontestsview);
+        }
+        $testsview->set('basicinfo', $basicinfo);
+     $this->param('year');   
         $dateclass = Date::time();
         $testsview->fecha_hoy = $dateclass->format('ve');
 //        print_r(Date::create_from_string($testsview->fecha_hoy , "ve"));
         $this->template->maincontent = $testsview;
 
+    }
+    public function action_session()
+    {
+        var_dump($this->param('variable'));
+        var_dump($this->param('id'));
+        
+        $ss_handle_variable = $this->param('variable');
+        $ss_handle_id = $this->param('id');
+        extract(Session::get());
+        
+        switch($ss_handle_variable)
+        {
+            case 'array_examenes':
+                if(isset($array_examenes))
+                {
+                    if($ss_handle_id != null)
+                    {
+                        unset($array_examenes[$ss_handle_id]);
+                        Session::set('array_examenes', $array_examenes);
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    
+                }
+                break;
+            default:
+                break;
+        }
+        return new Response();
     }
 }
