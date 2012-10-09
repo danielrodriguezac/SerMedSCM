@@ -1,4 +1,7 @@
-$('#datepicker').datepicker({
-    format: 'dd/mm/yyyy',
-    endDate: 'today'
+$(document).ready(function() {
+	$('#datepicker').datepicker({
+		format: 'yyyy-mm-dd',
+		endDate: 'today'
+	});
+	$('.applytooltip').tooltip();
 });

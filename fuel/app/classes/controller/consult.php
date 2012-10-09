@@ -119,7 +119,7 @@ class Controller_Consult extends Controller_Template
     {
         $this->template->title = 'Página de Exámenes';
 
-        print_r(Session::get());
+//        print_r(Session::get());
         extract(Session::get());
         
 //        echo Date::create_from_string($array_examenes[0]['fecha'] , "ve");
@@ -135,14 +135,14 @@ class Controller_Consult extends Controller_Template
         $validation->add('observaciones', 'Observaciones')->add_rule('required')->add_rule('min_length', 4);
         $validation->add('fecha', 'Fecha en que se realizó el exámen')
                 ->add_rule('required')
-                ->add_rule('match_pattern', '/((?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d])(?!.)/is');
+                ->add_rule('match_pattern', '/((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d])(?!.)/is');
         $validation->add('mas_examenes', '¿Reportar otro exámen?')->add_rule('required')->add_rule('numeric_min', 0)->add_rule('numeric_max', 1);
         if(Input::Post())
         {
             if($validation->run())
             {
                 $dataset = $validation->validated();
-                $dataset['fecha'] = Date::create_from_string($dataset['fecha'] , "ve")->get_timestamp();
+                $dataset['fecha'] = Date::create_from_string($dataset['fecha'] , "iso8601")->get_timestamp();
                 $dataset['fecha'] += 43200;
                 $array_examen_actual = array(
                                             'tipo'          => $dataset['tipo'],
@@ -175,14 +175,12 @@ class Controller_Consult extends Controller_Template
         $basicinfo = ViewModel::Forge('consult/basicinfo');
         $basicinfo->set('userqueryresult', $data);
         
-        if(isset($array_examenes))
+        if(isset($array_examenes) or (Session::get('array_examenes', false) != false))
         {
-            $sessiontestsview = View::Forge('consult/sessiontests');
-            $sessiontestsview->set('sessiontests', $array_examenes);
+            $sessiontestsview = ViewModel::Forge('consult/sessiontests');
             $testsview->set('sessiontests', $sessiontestsview);
         }
         $testsview->set('basicinfo', $basicinfo);
-     $this->param('year');   
         $dateclass = Date::time();
         $testsview->fecha_hoy = $dateclass->format('ve');
 //        print_r(Date::create_from_string($testsview->fecha_hoy , "ve"));
@@ -210,13 +208,10 @@ class Controller_Consult extends Controller_Template
                     }
                     else
                     {
-                        
+                        Session::delete('array_examenes');
                     }
                 }
-                else
-                {
-                    
-                }
+                Response::redirect('consult/tests');
                 break;
             default:
                 break;

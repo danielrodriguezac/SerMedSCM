@@ -1,7 +1,7 @@
 <?php echo $basicinfo; ?>
-<div class="page-header">
+<!--<div class="page-header">
     <h3>Registro de ex&aacute;menes m&eacute;dicos</h3>
-</div>
+</div>-->
 <div class="row-fluid">
     <form class="" action="<?php echo Uri::create('consult/tests'); ?>" method="post" autocomplete="off">
         <div class="span3">
@@ -43,7 +43,7 @@
             <a class="btn btn-primary" href="<?php echo Uri::create('consult/stage3'); ?>">Continuar sin registrar</a>
         </div>
         <div class="span9">
-            <?php echo $sessiontests; ?>
+            <?php if(isset($sessiontests)) echo $sessiontests; ?>
         </div>
     </form>
 </div>

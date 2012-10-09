@@ -42,6 +42,8 @@ return array(
 
 		'24h'		 => '%H:%M',
 		'12h'		 => '%I:%M %p',
-                've'             => '%d/%m/%Y'
+                've'             => '%d/%m/%Y',
+                've_full'        => '%A, %d de %B de %Y',
+                'iso8601'        => '%Y-%m-%d',
 	)
 );
