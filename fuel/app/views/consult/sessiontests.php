@@ -36,9 +36,7 @@
                         <a href="#" class="btn btn-mini">1</a>
                         <a href="#" class="btn btn-mini">1</a>-->
                 <a href="<?php  echo Uri::create('consult/session/array_examenes/'.$clave); ?>" class="btn btn-mini"><i class="icon-trash"></i>  Eliminar</a>
-                
             </td>
-                
         </tr>
         <?php endforeach; ?>
     </tbody>

@@ -17,19 +17,19 @@
                 echo '</ul>';
             }
             ?>
-            <div id="well_examenes" class="well">
+            <div id="well_examenes" class="row-fluid">
                 <label class="text-info" for="tipo">Tipo de Ex&aacute;men</label>
-                <textarea rows="4" class="" name="tipo" id="tipo" placeholder="e.j. Hematologia Completa, Colesterol total, etc..." required autofocus></textarea>
+                <textarea rows="4" class="span12" name="tipo" id="tipo" placeholder="e.j. Hematologia Completa, Colesterol total, etc..." required autofocus></textarea>
 
                 <label class="text-info" for="resultados">Resultados:</label>
-                <textarea rows="4" class="" name="resultados" id="resultados" placeholder="Informacion mostrada en examenes." required></textarea>
+                <textarea rows="4" class="span12" name="resultados" id="resultados" placeholder="Informacion mostrada en examenes." required></textarea>
 
                 <label class="text-info" for="observaciones">Observaciones:</label>
-                <textarea rows="4" class="" name="observaciones" id="observaciones" placeholder="" required></textarea>
+                <textarea rows="4" class="span12" name="observaciones" id="observaciones" placeholder="" required></textarea>
 
                 <label class="text-info" for="fecha">Fecha en que se realiz&oacute; el ex&aacute;men:</label>
-<!--                <input class="span5" name="fecha" type="date" max="<?php echo $fecha_hoy; ?>" required />-->
-                <input type="text" id="datepicker" name="fecha" readonly required>
+<!--                <input class="span12" name="fecha" type="date" max="<?php echo $fecha_hoy; ?>" required />-->
+                <input class="span12" type="text" id="datepicker" name="fecha" readonly required>
 
                 <label class="text-info" for="mas_examenes">&iquest;Reportar otro ex&aacute;men?</label>
                 <label class="radio">

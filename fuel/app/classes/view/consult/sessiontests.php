@@ -17,7 +17,7 @@ class View_Consult_Sessiontests extends ViewModel
             {
                 $array_examenes[$examen]['observacionesshort'] = substr($datos['observaciones'], 0, 19).'...';
             }
-            $array_examenes[$examen]['fecha'] = Date::forge($datos['fecha'])->format('ve_full');
+            $array_examenes[$examen]['fecha'] = htmlentities(Date::forge($datos['fecha'])->format('ve_full')); //@WINFIX: Windows locale limitations mess with the characters returned by strftime, have to pass it through entities to fix it
         }
         $this->sessiontests = $array_examenes;
     }
