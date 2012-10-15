@@ -29,7 +29,7 @@
 
                 <label class="text-info" for="fecha">Fecha en que se realiz&oacute; el ex&aacute;men:</label>
 <!--                <input class="span12" name="fecha" type="date" max="<?php echo $fecha_hoy; ?>" required />-->
-                <input class="span12" type="text" id="datepicker" name="fecha" readonly required>
+                <input class="span12" type="text" id="datepicker" name="fecha" value="<?php echo $fecha_hoy; ?>" required readonly>
 
                 <label class="text-info" for="mas_examenes">&iquest;Reportar otro ex&aacute;men?</label>
                 <label class="radio">

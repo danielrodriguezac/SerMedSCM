@@ -14,10 +14,34 @@
                 echo '</ul></div>';
             }
             ?>
-            <div id="well_diagnostico" class="row-fluid">
-                <label class="text-info" for="tipo">Tipo de Ex&aacute;men</label>
-                <textarea rows="4" class="span12" name="tipo" id="tipo" placeholder="e.j. Hematologia Completa, Colesterol total, etc..." required autofocus></textarea>
-
+            <div id="div_diagnostico" class="row-fluid">
+                <label for="tipo">Diagnostico</label>
+                <select id="diagnostico" class="span12" name="diagnostico" required autofocus>
+                    <option value=""> --- </option>
+                    <option value="0">
+                        UÑERO
+                    </option>
+                    <option value="1">
+                        Espirotlitis caustica
+                    </option>
+                    <option value="2">
+                        Cochiflosis Gertrudica
+                    </option>
+                    <?php //foreach receiving an array of possible diagnostics ?>
+                </select>
+                <select id="sistema" class="span12" name="sistema" required>
+                    <option value=""> --- </option>
+                    <option value="0">
+                        Talacha
+                    </option>
+                    <option value="1">
+                        Pescuezo
+                    </option>
+                    <option value="2">
+                        Patas
+                    </option>
+                    <?php //foreach receiving an array of possible systems ?>
+                </select>
                 <label class="text-info" for="resultados">Resultados:</label>
                 <textarea rows="4" class="span12" name="resultados" id="resultados" placeholder="Informacion mostrada en examenes." required></textarea>
 

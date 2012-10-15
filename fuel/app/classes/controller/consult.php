@@ -70,7 +70,6 @@ class Controller_Consult extends Controller_Template
             $employees = Model_Employees::find()->where('id', $idpaciente);
             $data = $employees->get_one();
 
-            
             $stage2view = View::Forge('consult/stage2');
             
             if($validation->run())
@@ -104,7 +103,7 @@ class Controller_Consult extends Controller_Template
                 $stage2view->set('errors', $validation->error());
             }
             
-            $basicinfo =ViewModel::Forge('consult/basicinfo');
+            $basicinfo = ViewModel::Forge('consult/basicinfo');
             $basicinfo->set('userqueryresult', $data);
             
             $stage2view->set('basicinfo', $basicinfo);
@@ -182,7 +181,7 @@ class Controller_Consult extends Controller_Template
         }
         $testsview->set('basicinfo', $basicinfo);
         $dateclass = Date::time();
-        $testsview->fecha_hoy = $dateclass->format('ve');
+        $testsview->fecha_hoy = $dateclass->format('iso8601');
 //        print_r(Date::create_from_string($testsview->fecha_hoy , "ve"));
         $this->template->maincontent = $testsview;
 

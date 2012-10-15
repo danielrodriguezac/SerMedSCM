@@ -49,16 +49,7 @@
                 </optgroup>
             </select>
             </div>
-            <div id="well_examenes" class="span12">
-                <label class="text-info" for="examenes">&iquest;Reportar ex&aacute;menes?</label>
-                <label class="radio  inline">
-                    <input type="radio" name="examenes" id="examenes" value="1" required>Si
-                </label>
-                <label class="radio inline">
-                    <input type="radio" name="examenes" value="0" checked>No
-                </label>
-            </div>
-            <div id="well_consulta_especial" class="span12 well">
+            <div id="well_consulta_especial" class="span12">
                 <label class="text-info" for="consulta_especial">&iquest;Es una Consulta especial?</label>
                 <label class="radio inline">
                     <input type="radio" name="consulta_especial" id="consulta_especial" value="1" required>Si
@@ -84,7 +75,6 @@
                             Egreso
                         </option>
                     </select>
-
                     <label class="text-info" for="ce_limitacion">&iquest;Existe alguna limitacion?</label>
                     <label class="radio inline">
                         <input type="radio" name="ce_limitacion" id="ce_limitacion" value="1" required disabled>Si
@@ -97,6 +87,15 @@
                 <label class="text-info" for="ce_descripcion">Describa brevemente la limitacion:</label>
                 <textarea rows="4" class="span12" name="ce_descripcion" id="ce_descripcion" placeholder="" disabled required></textarea>
                 </div>
+            </div>
+            <div id="well_examenes" class="span12">
+                <label class="text-info" for="examenes">&iquest;Reportar ex&aacute;menes?</label>
+                <label class="radio  inline">
+                    <input type="radio" name="examenes" id="examenes" value="1" required>Si
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="examenes" value="0" checked>No
+                </label>
             </div>
             <button type="submit" class="btn">Enviar</button>
             </div>
