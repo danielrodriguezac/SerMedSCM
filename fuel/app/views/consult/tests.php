@@ -9,12 +9,12 @@
             <hr>
             <?php if(isset($errors))
             {
-                echo '<ul>';
+                echo '<div class="alert alert-error alert-block"><button type="button" class="close" data-dismiss="alert">×</button><ul><h4>Error</h4>';
                 foreach ($errors as $key => $value) 
                 {
                     echo "<li>$value</li>";
                 }
-                echo '</ul>';
+                echo '</ul></div>';
             }
             ?>
             <div id="well_examenes" class="row-fluid">

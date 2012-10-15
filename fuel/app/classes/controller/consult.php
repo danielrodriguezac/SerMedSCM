@@ -79,6 +79,7 @@ class Controller_Consult extends Controller_Template
                 Session::set('departamento', $dataset['departamento']);
                 Session::set('motivo_consulta', $dataset['motivo_consulta']);
                 Session::set('tipo_consulta', $dataset['tipo_consulta']);
+                Session::set('examenes', $dataset['examenes']);
                 Session::set('consulta_especial', $dataset['consulta_especial']);
                 if($dataset['consulta_especial'])
                 {
@@ -89,7 +90,6 @@ class Controller_Consult extends Controller_Template
                         Session::set('ce_descripcion', $dataset['ce_descripcion']);
                     }
                 }
-                Session::set('examenes', $dataset['examenes']);
                 if($dataset['examenes'])
                 {
                     Response::redirect('consult/tests');
@@ -186,6 +186,18 @@ class Controller_Consult extends Controller_Template
 //        print_r(Date::create_from_string($testsview->fecha_hoy , "ve"));
         $this->template->maincontent = $testsview;
 
+    }
+    public function action_stage3()
+    {
+        print_r(Session::get());
+        extract(Session::get());
+        
+        if(!isset($departamento, $motivo_consulta, $tipo_consulta, $examenes, $consulta_especial))
+        {
+            Response::redirect('consult/stage2');
+        }
+        
+        $this->template->maincontent = 'pepito';
     }
     public function action_session()
     {
