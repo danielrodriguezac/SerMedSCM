@@ -27,20 +27,22 @@
                 <label class="text-info" for="observaciones">Observaciones:</label>
                 <textarea rows="4" class="span12" name="observaciones" id="observaciones" placeholder="" required></textarea>
 
-                <label class="text-info" for="fecha">Fecha en que se realiz&oacute; el ex&aacute;men:</label>
+                <label class="text-info" for="datepicker">Fecha en que se realiz&oacute; el ex&aacute;men:</label>
 <!--                <input class="span12" name="fecha" type="date" max="<?php echo $fecha_hoy; ?>" required />-->
                 <input class="span12" type="text" id="datepicker" name="fecha" value="<?php echo $fecha_hoy; ?>" required readonly>
 
                 <label class="text-info" for="mas_examenes">&iquest;Reportar otro ex&aacute;men?</label>
-                <label class="radio">
+                <label class="radio inline">
                     <input type="radio" name="mas_examenes" id="mas_examenes" value="1" required>Si
                 </label>
-                <label class="radio">
+                <label class="radio inline">
                     <input type="radio" name="mas_examenes" value="0" checked>No
                 </label>
+                <hr>
+                <button type="submit" class="btn">Registrar</button>
+                <a class="btn btn-primary" href="<?php echo Uri::create('consult/stage3'); ?>">Continuar sin registrar</a>
             </div>
-            <button type="submit" class="btn">Enviar</button>
-            <a class="btn btn-primary" href="<?php echo Uri::create('consult/stage3'); ?>">Continuar sin registrar</a>
+            
         </div>
         <div class="span9">
             <?php if(isset($sessiontests)) echo $sessiontests; ?>

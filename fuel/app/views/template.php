@@ -28,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" delclass=" hidden-phone" href="./">SERMEDSCM</a>
+          <a class="brand" href="./">SERMEDSCM</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <?php echo $topnavbar ?>

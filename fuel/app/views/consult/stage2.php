@@ -14,8 +14,8 @@
         <div class="span3">
             <h4>Datos b&aacute;sicos de Consulta</h4>
             <hr>
-            <div id="" class="row-fluid">
-            <div id="well_consulta_especial" class="span12">
+            <div class="row-fluid">
+            <div id="well_departamento" class="span12">
             <label class="text-info" for="departamento">Departamento</label>
             <select id="departamento" class="span12" name="departamento" required autofocus>
                 <option value=""> --- </option>
@@ -49,7 +49,7 @@
                 </optgroup>
             </select>
             </div>
-            <div id="well_consulta_especial" class="span12">
+            <div id="well_consulta_especial" class="span12 well well_large">
                 <label class="text-info" for="consulta_especial">&iquest;Es una Consulta especial?</label>
                 <label class="radio inline">
                     <input type="radio" name="consulta_especial" id="consulta_especial" value="1" required>Si
@@ -96,12 +96,11 @@
                 <label class="radio inline">
                     <input type="radio" name="examenes" value="0" checked>No
                 </label>
+                <hr>
+                <button type="submit" class="btn">Registrar</button>
             </div>
-            <button type="submit" class="btn">Enviar</button>
             </div>
         </div>
-        <div class="span9">
-            
-        </div>
+
     </form>
 </div>

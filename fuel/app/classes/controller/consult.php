@@ -188,15 +188,21 @@ class Controller_Consult extends Controller_Template
     }
     public function action_stage3()
     {
-        print_r(Session::get());
+//        print_r(Session::get());
         extract(Session::get());
         
         if(!isset($departamento, $motivo_consulta, $tipo_consulta, $examenes, $consulta_especial))
         {
             Response::redirect('consult/stage2');
         }
+        $employees = Model_Employees::find()->where('id', $idpaciente);
+        $data = $employees->get_one();
+        $basicinfo = ViewModel::Forge('consult/basicinfo');
+        $basicinfo->set('userqueryresult', $data);
         
-        $this->template->maincontent = 'pepito';
+        $stage3view = View::forge('consult/stage3');
+        $stage3view->set('basicinfo', $basicinfo);
+        $this->template->maincontent = $stage3view;
     }
     public function action_session()
     {

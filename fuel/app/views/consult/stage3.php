@@ -2,7 +2,7 @@
 <div class="row-fluid">
     <form class="" action="<?php echo Uri::create('consult/stage3'); ?>" method="post" autocomplete="off">
         <div class="span3">
-            <h4>Registrar Diagn&oacute;stico</h4>
+            <h4>Diagn&oacute;stico</h4>
             <hr>
             <?php if(isset($errors))
             {
@@ -15,7 +15,7 @@
             }
             ?>
             <div id="div_diagnostico" class="row-fluid">
-                <label for="tipo">Diagnostico</label>
+                <label for="diagnostico">Diagnostico</label>
                 <select id="diagnostico" class="span12" name="diagnostico" required autofocus>
                     <option value=""> --- </option>
                     <option value="0">
@@ -29,6 +29,7 @@
                     </option>
                     <?php //foreach receiving an array of possible diagnostics ?>
                 </select>
+                <label for="sistema">Sistema</label>
                 <select id="sistema" class="span12" name="sistema" required>
                     <option value=""> --- </option>
                     <option value="0">
@@ -42,26 +43,50 @@
                     </option>
                     <?php //foreach receiving an array of possible systems ?>
                 </select>
-                <label class="text-info" for="resultados">Resultados:</label>
-                <textarea rows="4" class="span12" name="resultados" id="resultados" placeholder="Informacion mostrada en examenes." required></textarea>
+                <label for="enfermedad_ocupacional">&iquest;El paciente muestra s&iacute;ntomas de una enfermedad ocupacional?</label>
+                <select id="enfermedad_ocupacional" class="span12" name="enfermedad_ocupacional" required>
+                    <option value=""> --- </option>
+                    <option value="1">
+                        Si
+                    </option>
+                    <option value="0">
+                        No
+                    </option>
+                </select>
+                
+                <div id="well_accidente_trabajo" class="span12 well well_large">
+                    <label for="accidente_trabajo">&iquest;Es consecuencia de un Accidente Laboral?</label>
+                    <label class="radio inline">
+                        <input type="radio" name="accidente_trabajo" id="accidente_trabajo" value="1" required>Si
+                    </label>
+                    <label class="radio inline">
+                        <input type="radio" name="accidente_trabajo" value="0" checked>No
+                    </label>
 
-                <label class="text-info" for="observaciones">Observaciones:</label>
-                <textarea rows="4" class="span12" name="observaciones" id="observaciones" placeholder="" required></textarea>
-
-                <label class="text-info" for="fecha">Fecha en que se realiz&oacute; el ex&aacute;men:</label>
-<!--                <input class="span12" name="fecha" type="date" max="<?php echo $fecha_hoy; ?>" required />-->
-                <input class="span12" type="text" id="datepicker" name="fecha" readonly required>
-
-                <label class="text-info" for="mas_examenes">&iquest;Reportar otro ex&aacute;men?</label>
-                <label class="radio">
-                    <input type="radio" name="mas_examenes" id="mas_examenes" value="1" required>Si
-                </label>
-                <label class="radio">
-                    <input type="radio" name="mas_examenes" value="0" checked>No
-                </label>
+                    <div id="well_accidente_trabajo_1">
+                        <label class="" for="at_tipo">&iquest;De que tipo?</label>
+                        <select id="at_tipo" class="span12" name="at_tipo" required disabled>
+                            <option value=""> --- </option>
+                            <option value="at/st">
+                                AT/Sin p&eacute;rdida de tiempo
+                            </option>
+                            <option value="at/ct">
+                                AT/Con p&eacute;rdida de tiempo
+                            </option>
+                            <option value="cura">
+                                C&uacute;ra o tratamiento relacionado
+                            </option>
+                        </select>
+                        <label class="" for="ac_descripcion">Describa brevemente el accidente:</label>
+                        <textarea rows="4" class="span12" name="ac_descripcion" id="ac_descripcion" placeholder="Sea breve.." required disabled></textarea>
+                    </div>
+                </div>
+                <div class="span12">
+                    <label class="" for="evolucion">Evoluci&oacute;n:</label>
+                    <textarea rows="4" class="span12" name="evolucion" id="evolucion" placeholder="Progreso del paciente e informacion de importancia M&eacute;dica" required></textarea>
+                    <button type="submit" class="btn">Guardar</button>
+                </div>
             </div>
-            <button type="submit" class="btn">Enviar</button>
-            <a class="btn btn-primary" href="<?php echo Uri::create('consult/stage3'); ?>">Continuar sin registrar</a>
         </div>
         <div class="span9">
             <?php if(isset($sessiontests)) echo $sessiontests; ?>
