@@ -43,26 +43,28 @@
 <hr>
         <?php foreach ($sessiontests as $clave => $test): ?>
         <div class="row-fluid d_section">
-            <div class="span3"><span class="label label-info">Tipo:</span>  
+            <div class="span2"><span class="label label-info">Tipo:</span>  
                 <?php if(isset($test['tiposhort'])): ?>
                 <a href="#" class="applytooltip" title="<?php echo $test['tipo']; ?>"><?php echo $test['tiposhort']; ?></a>
                     <?php else: echo $test['tipo']; endif; ?>
             </div>
             <div class="span3"> <span class="label label-info">Resultados:</span>  
                 <?php if(isset($test['resultadosshort'])): ?>
-                <a href="#" class="applytooltip" title="<?php echo $test['resultados']; ?>"><?php echo $test['resultadosshort']; ?></a>
+                <a href="#" class="applytooltip" data-html="false" title="<?php echo $test['resultados']; ?>"><?php echo $test['resultadosshort']; ?></a>
                     <?php else: echo $test['resultados']; endif; ?>
             </div>
             <div class="span3"><span class="label label-info">Observaciones:</span>  
                 <?php if(isset($test['observacionesshort'])): ?>
-                <a href="#" class="applytooltip" title="<?php echo $test['observaciones']; ?>"><?php echo $test['observacionesshort']; ?></a>
+                <a href="#" class="applytooltip" data-html="false" title="<?php echo $test['observaciones']; ?>"><?php echo $test['observacionesshort']; ?></a>
                     <?php else: echo $test['observaciones']; endif; ?>
             </div>
             <div class="span2">
                 <span class="label label-info">Fecha:</span>  <?php echo $test['fecha']; ?>
             </div>
-            <div class="span1">
+            <div class="span2">
+                <div class="pull-right">
                 <a href="<?php  echo Uri::create('consult/session/array_examenes/'.$clave); ?>" class="btn btn-mini"><i class="icon-trash"></i>  Eliminar</a>
+                </div>
             </div>
         </div>
         <?php endforeach; ?>

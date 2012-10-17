@@ -202,6 +202,10 @@ class Controller_Consult extends Controller_Template
         
         $stage3view = View::forge('consult/stage3');
         $stage3view->set('basicinfo', $basicinfo);
+        
+        $sessiontestsview = ViewModel::forge('consult/sessiontests');
+        $stage3view->set('sessiontests', $sessiontestsview);
+        
         $this->template->maincontent = $stage3view;
     }
     public function action_session()
