@@ -1,19 +1,19 @@
 <?php echo $basicinfo; ?>
 <div class="row-fluid">
-<?php if(isset($errors))
-        {
-            echo '<ul>';
-            foreach ($errors as $key => $value) 
-            {
-                echo "<li>$value</li>";
-            }
-            echo '</ul>';
-        }
-?>
     <form class="" action="<?php echo Uri::create('consult/stage2'); ?>" method="post" autocomplete="off">
         <div class="span3">
             <h4>Datos b&aacute;sicos de Consulta</h4>
             <hr>
+            <?php if(isset($errors))
+            {
+                echo '<ul>';
+                foreach ($errors as $key => $value) 
+                {
+                    echo "<li>$value</li>";
+                }
+                echo '</ul>';
+            }
+            ?>
             <div class="row-fluid">
             <div id="well_departamento" class="span12">
             <label class="text-info" for="departamento">Departamento</label>
@@ -101,6 +101,8 @@
             </div>
             </div>
         </div>
-
     </form>
+        <div class="span9">
+            <?php if(isset($sessiondata)) echo $sessiondata; ?>
+        </div>
 </div>

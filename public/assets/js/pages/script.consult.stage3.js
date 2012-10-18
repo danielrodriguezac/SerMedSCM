@@ -1,6 +1,12 @@
 $(document).ready(function() {
 	$('div#well_accidente_trabajo_1').hide();
 	$('.applytooltip').tooltip();
+	$('.applypopover').popover({
+			html: true,
+			placement: 'top',
+			trigger: 'click',
+
+		});
 	$('input[name=accidente_trabajo]').on('change', function() {
 		if($(this).val() == 1){
 			$('div#well_accidente_trabajo_1').show();

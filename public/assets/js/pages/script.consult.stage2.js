@@ -2,6 +2,14 @@ $(document).ready(function() {
 	$('div#well_consulta_especial_1').hide();
 	$('div#well_consulta_especial_2').hide();
 
+	$('.applytooltip').tooltip();
+	$('.applypopover').popover({
+			html: true,
+			placement: 'top',
+			trigger: 'click',
+
+		});
+
 	$('input[name=consulta_especial]').on('change', function() {
 		// alert(this.value);
 		if($(this).val() == 1){

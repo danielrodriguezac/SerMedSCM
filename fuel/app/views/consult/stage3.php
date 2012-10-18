@@ -53,7 +53,7 @@
                         No
                     </option>
                 </select>
-                
+
                 <div id="well_accidente_trabajo" class="span12 well well_large">
                     <label for="accidente_trabajo">&iquest;Es consecuencia de un Accidente Laboral?</label>
                     <label class="radio inline">
@@ -88,8 +88,8 @@
                 </div>
             </div>
         </div>
-        <div class="span9">
-            <?php if(isset($sessiontests)) echo $sessiontests; ?>
-        </div>
     </form>
+        <div class="span9">
+            <?php if(isset($sessiondata)) echo $sessiondata; ?>
+        </div>
 </div>

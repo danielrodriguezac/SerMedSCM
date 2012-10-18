@@ -4,4 +4,10 @@ $(document).ready(function() {
 		endDate: 'today'
 	});
 	$('.applytooltip').tooltip();
+	$('.applypopover').popover({
+			html: true,
+			placement: 'top',
+			trigger: 'click',
+
+		});
 });

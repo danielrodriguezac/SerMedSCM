@@ -105,8 +105,11 @@ class Controller_Consult extends Controller_Template
             
             $basicinfo = ViewModel::Forge('consult/basicinfo');
             $basicinfo->set('userqueryresult', $data);
-            
             $stage2view->set('basicinfo', $basicinfo);
+            
+            $sessiondataview = ViewModel::forge('consult/sessiondata');
+            $stage2view->set('sessiondata', $sessiondataview);
+            
             $this->template->maincontent = $stage2view;
         }
         else
@@ -174,11 +177,9 @@ class Controller_Consult extends Controller_Template
         $basicinfo = ViewModel::Forge('consult/basicinfo');
         $basicinfo->set('userqueryresult', $data);
         
-        if(isset($array_examenes) or (Session::get('array_examenes', false) != false))
-        {
-            $sessiontestsview = ViewModel::Forge('consult/sessiontests');
-            $testsview->set('sessiontests', $sessiontestsview);
-        }
+        $sessiondataview = ViewModel::forge('consult/sessiondata');
+        $testsview->set('sessiondata', $sessiondataview);
+        
         $testsview->set('basicinfo', $basicinfo);
         $dateclass = Date::time();
         $testsview->fecha_hoy = $dateclass->format('iso8601');
@@ -203,8 +204,8 @@ class Controller_Consult extends Controller_Template
         $stage3view = View::forge('consult/stage3');
         $stage3view->set('basicinfo', $basicinfo);
         
-        $sessiontestsview = ViewModel::forge('consult/sessiontests');
-        $stage3view->set('sessiontests', $sessiontestsview);
+        $sessiondataview = ViewModel::forge('consult/sessiondata');
+        $stage3view->set('sessiondata', $sessiondataview);
         
         $this->template->maincontent = $stage3view;
     }
