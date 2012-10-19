@@ -7,7 +7,9 @@
         <div class="span3">
             <h4>Registrar Exámen</h4>
             <hr>
-            <?php if(isset($errors))
+            <?php 
+            if(!isset($errors)) $errors = Session::get('errors', null);
+            if(isset($errors))
             {
                 echo '<div class="alert alert-error alert-block"><button type="button" class="close" data-dismiss="alert">×</button><ul><h4>Error</h4>';
                 foreach ($errors as $key => $value) 

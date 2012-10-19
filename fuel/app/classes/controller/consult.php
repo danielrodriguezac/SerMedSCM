@@ -66,9 +66,6 @@ class Controller_Consult extends Controller_Template
             $validation->add('ce_limitacion', '¿Existen limitaciones?');
             $validation->add('ce_descripcion', 'Describa brevemente la limitacion');
             $validation->add('examenes', '¿Trajo examenes para registrar?')->add_rule('required');
-            
-            $employees = Model_Employees::find()->where('id', $idpaciente);
-            $data = $employees->get_one();
 
             $stage2view = View::Forge('consult/stage2');
             
@@ -104,7 +101,6 @@ class Controller_Consult extends Controller_Template
             }
             
             $basicinfo = ViewModel::Forge('consult/basicinfo');
-            $basicinfo->set('userqueryresult', $data);
             $stage2view->set('basicinfo', $basicinfo);
             
             $sessiondataview = ViewModel::forge('consult/sessiondata');
@@ -171,11 +167,8 @@ class Controller_Consult extends Controller_Template
                 $testsview->set('errors', $validation->error());
             }
         }
-        $employees = Model_Employees::find()->where('id', $idpaciente);
-        $data = $employees->get_one();
         
         $basicinfo = ViewModel::Forge('consult/basicinfo');
-        $basicinfo->set('userqueryresult', $data);
         
         $sessiondataview = ViewModel::forge('consult/sessiondata');
         $testsview->set('sessiondata', $sessiondataview);
@@ -191,17 +184,42 @@ class Controller_Consult extends Controller_Template
     {
 //        print_r(Session::get());
         extract(Session::get());
-        
+        $stage3view = View::forge('consult/stage3');
         if(!isset($departamento, $motivo_consulta, $tipo_consulta, $examenes, $consulta_especial))
         {
             Response::redirect('consult/stage2');
         }
-        $employees = Model_Employees::find()->where('id', $idpaciente);
-        $data = $employees->get_one();
+        $validation = Validation::forge('stage3validation');
+        $validation->add('diagnostico', 'Diagnostico')->add_rule('required');
+        $validation->add('sistema', 'Sistema')->add_rule('required');
+        $validation->add('enfermedad_ocupacional', 'Enfermedad ocupacional')->add_rule('required');
+        $validation->add('accidente_trabajo', 'Accidente de trabajo')->add_rule('required');
+        $validation->add('at_tipo', 'Tipo de accidente de trabajo');
+        $validation->add('at_descripcion', 'Descripcion de accidente de trabajo');
+        $validation->add('evolucion', 'Evolucion')->add_rule('required');
+        if(Input::post()){
+            if($validation->run())
+            {
+                $dataset = $validation->validated();
+                Session::set('diagnostico', $dataset['diagnostico']);
+                Session::set('sistema', $dataset['sistema']);
+                Session::set('enfermedad_ocupacional', $dataset['enfermedad_ocupacional']);
+                Session::set('accidente_trabajo', $dataset['accidente_trabajo']);
+                if($dataset['accidente_trabajo'])
+                {
+                    Session::set('at_tipo', $dataset['at_tipo']);
+                    Session::set('at_descripcion', $dataset['at_descripcion']);
+                }
+                Session::set('evolucion', $dataset['evolucion']);
+                Response::redirect('consult/stage4');
+            }
+            else 
+            {
+                $stage3view->set('errors', $validation->error());
+            }
+        }
         $basicinfo = ViewModel::Forge('consult/basicinfo');
-        $basicinfo->set('userqueryresult', $data);
         
-        $stage3view = View::forge('consult/stage3');
         $stage3view->set('basicinfo', $basicinfo);
         
         $sessiondataview = ViewModel::forge('consult/sessiondata');

@@ -1,10 +1,12 @@
-<?php echo $basicinfo; ?>
+<?php echo $basicinfo; //print_r(Session::get());?>
 <div class="row-fluid">
     <form class="" action="<?php echo Uri::create('consult/stage3'); ?>" method="post" autocomplete="off">
         <div class="span3">
             <h4>Diagn&oacute;stico</h4>
             <hr>
-            <?php if(isset($errors))
+            <?php 
+            if(!isset($errors)) $errors = Session::get('errors', null);
+            if(isset($errors))
             {
                 echo '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><ul>';
                 foreach ($errors as $key => $value) 
@@ -77,8 +79,8 @@
                                 C&uacute;ra o tratamiento relacionado
                             </option>
                         </select>
-                        <label class="" for="ac_descripcion">Describa brevemente el accidente:</label>
-                        <textarea rows="4" class="span12" name="ac_descripcion" id="ac_descripcion" placeholder="Sea breve.." required disabled></textarea>
+                        <label class="" for="at_descripcion">Describa brevemente el accidente:</label>
+                        <textarea rows="4" class="span12" name="at_descripcion" id="at_descripcion" placeholder="Sea breve.." required disabled></textarea>
                     </div>
                 </div>
                 <div class="span12">

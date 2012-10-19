@@ -4,7 +4,9 @@
         <div class="span3">
             <h4>Datos b&aacute;sicos de Consulta</h4>
             <hr>
-            <?php if(isset($errors))
+            <?php 
+            if(!isset($errors)) $errors = Session::get('errors', null);
+            if(isset($errors))
             {
                 echo '<ul>';
                 foreach ($errors as $key => $value) 

@@ -3,7 +3,9 @@ class View_Consult_Basicinfo extends ViewModel
 {
     public function view()
     {
-        $userqueryresult = $this->get('userqueryresult');
+        $idpaciente = Session::get('idpaciente', null);
+        $employees = Model_Employees::find()->where('id', $idpaciente);
+        $userqueryresult = $employees->get_one();
         $this->ci = number_format($userqueryresult->ci , 0, ',', '.');
         switch($userqueryresult->nacionalidad)
         {

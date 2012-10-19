@@ -9,8 +9,34 @@
             <div id="sessionvars" class="accordion-body collapse">
                 <div class="accordion-inner">
                     <?php foreach ($sessionvars as $clave => $datos): ?>
-                                    <button class="btn applypopover btn-block" data-title="<?php echo $datos['spantext'];?>" data-content="<?php echo $datos['value'];?>"><?php echo $datos['spantext'];?></button>
+                        <button class="btn applypopover btn-mini btn-block" data-title="<?php echo $datos['spantext'];?>" data-content="<?php echo $datos['value'];?>"><?php echo $datos['spantext'];?></button>
                     <?php endforeach; ?>
+
+                        <hr><hr><hr><hr>
+
+
+
+
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <?php foreach ($sessionvars as $clave => $datos): ?>
+            <li class="dctive"><a href="#sessiondata-<?php echo $clave;?>" data-toggle="tab"><?php echo $datos['spantext'];?></a></li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="tab-content">
+        <?php foreach ($sessionvars as $clave => $datos): ?>
+            <div class="tab-pane dctive" id="sessiondata-<?php echo $clave;?>">
+                <p><?php echo $datos['value'];?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+
+
+
+
+
                 </div>
             </div>
         </div>
