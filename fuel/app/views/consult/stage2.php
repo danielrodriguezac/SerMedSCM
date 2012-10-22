@@ -5,7 +5,11 @@
             <h4>Datos b&aacute;sicos de Consulta</h4>
             <hr>
             <?php 
-            if(!isset($errors)) $errors = Session::get('errors', null);
+            if(!isset($errors))
+            {
+                $errors = Session::get('errors', null);
+                Session::delete('errors');
+            }
             if(isset($errors))
             {
                 echo '<ul>';

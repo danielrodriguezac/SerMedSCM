@@ -5,7 +5,11 @@
             <h4>Diagn&oacute;stico</h4>
             <hr>
             <?php 
-            if(!isset($errors)) $errors = Session::get('errors', null);
+            if(!isset($errors))
+            {
+                $errors = Session::get('errors', null);
+                Session::delete('errors');
+            }
             if(isset($errors))
             {
                 echo '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><ul>';

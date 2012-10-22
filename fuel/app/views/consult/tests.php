@@ -8,7 +8,11 @@
             <h4>Registrar Exámen</h4>
             <hr>
             <?php 
-            if(!isset($errors)) $errors = Session::get('errors', null);
+            if(!isset($errors))
+            {
+                $errors = Session::get('errors', null);
+                Session::delete('errors');
+            }
             if(isset($errors))
             {
                 echo '<div class="alert alert-error alert-block"><button type="button" class="close" data-dismiss="alert">×</button><ul><h4>Error</h4>';

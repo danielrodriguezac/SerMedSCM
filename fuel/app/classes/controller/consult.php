@@ -219,13 +219,46 @@ class Controller_Consult extends Controller_Template
             }
         }
         $basicinfo = ViewModel::Forge('consult/basicinfo');
-        
         $stage3view->set('basicinfo', $basicinfo);
         
         $sessiondataview = ViewModel::forge('consult/sessiondata');
         $stage3view->set('sessiondata', $sessiondataview);
         
         $this->template->maincontent = $stage3view;
+    }
+    public function action_stage4()
+    {
+//        print_r(Session::get());
+        extract(Session::get());
+        $stage4view = View::forge('consult/stage4');
+        if(!isset($departamento, $motivo_consulta, $tipo_consulta, $examenes, $consulta_especial, $diagnostico, $sistema, $enfermedad_ocupacional, $accidente_trabajo, $at_tipo, $at_descripcion, $evolucion))
+        {
+            Response::redirect('consult/stage3');
+        }
+//        $validation = Validation::forge('stage4validation');
+//        $validation->add('', '')->add_rule('required');
+//        if(Input::post()){
+//            if($validation->run())
+//            {
+//                $dataset = $validation->validated();
+//                Session::set('', $dataset['']);
+//                if($dataset[''])
+//                {
+//                }
+//                Response::redirect('consult/print');
+//            }
+//            else 
+//            {
+//                $stage4view->set('errors', $validation->error());
+//            }
+//        }
+        $basicinfo = ViewModel::Forge('consult/basicinfo');
+        $stage4view->set('basicinfo', $basicinfo);
+        
+        $sessiondataview = ViewModel::forge('consult/sessiondata');
+        $stage4view->set('sessiondata', $sessiondataview);
+        
+        $this->template->maincontent = $stage4view;
     }
     public function action_session()
     {
