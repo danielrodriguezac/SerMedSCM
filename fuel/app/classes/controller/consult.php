@@ -97,7 +97,11 @@ class Controller_Consult extends Controller_Template
             }
             else
             {
-                $stage2view->set('errors', $validation->error());
+                $errors = $validation->error();
+                if(!empty($errors))
+                {
+                    Session::set_flash('errors', $validation->error());
+                }
             }
             
             $basicinfo = ViewModel::Forge('consult/basicinfo');
@@ -135,8 +139,8 @@ class Controller_Consult extends Controller_Template
                 ->add_rule('required')
                 ->add_rule('match_pattern', '/((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d])(?!.)/is');
         $validation->add('mas_examenes', '¿Reportar otro exámen?')->add_rule('required')->add_rule('numeric_min', 0)->add_rule('numeric_max', 1);
-        if(Input::Post())
-        {
+//        if(Input::Post())
+//        {
             if($validation->run())
             {
                 $dataset = $validation->validated();
@@ -162,11 +166,15 @@ class Controller_Consult extends Controller_Template
                     Response::redirect('consult/stage3');
                 }
             }
-            else 
+            else
             {
-                $testsview->set('errors', $validation->error());
+                $errors = $validation->error();
+                if(!empty($errors))
+                {
+                    Session::set_flash('errors', $validation->error());
+                }
             }
-        }
+//        }
         
         $basicinfo = ViewModel::Forge('consult/basicinfo');
         
@@ -215,7 +223,11 @@ class Controller_Consult extends Controller_Template
             }
             else 
             {
-                $stage3view->set('errors', $validation->error());
+                $errors = $validation->error();
+                if(!empty($errors))
+                {
+                    Session::set_flash('errors', $validation->error());
+                }
             }
         }
         $basicinfo = ViewModel::Forge('consult/basicinfo');
@@ -249,7 +261,11 @@ class Controller_Consult extends Controller_Template
 //            }
 //            else 
 //            {
-//                $stage4view->set('errors', $validation->error());
+//                $errors = $validation->error();
+//                if(!empty($errors))
+//                {
+//                    Session::set_flash('errors', $validation->error());
+//                }
 //            }
 //        }
         $basicinfo = ViewModel::Forge('consult/basicinfo');

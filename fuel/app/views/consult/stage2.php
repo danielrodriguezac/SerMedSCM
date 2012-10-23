@@ -5,19 +5,15 @@
             <h4>Datos b&aacute;sicos de Consulta</h4>
             <hr>
             <?php 
-            if(!isset($errors))
-            {
-                $errors = Session::get('errors', null);
-                Session::delete('errors');
-            }
+            $errors = Session::get_flash('errors', null);
             if(isset($errors))
             {
-                echo '<ul>';
+                echo '<div class="alert alert-error alert-block"><button type="button" class="close" data-dismiss="alert">×</button><ul><h4>Error</h4>';
                 foreach ($errors as $key => $value) 
                 {
                     echo "<li>$value</li>";
                 }
-                echo '</ul>';
+                echo '</ul></div>';
             }
             ?>
             <div class="row-fluid">
