@@ -32,7 +32,7 @@ class Controller_Consult extends Controller_Template
         $form->add('submit', '', array('value' => 'Buscar', 'type' => 'submit', 'class' => 'btn btn-primary'));
         if (Input::post())
         {
-            $employees = Model_Employees::find()->where('ci', Input::post('ci'));
+            $employees = Model_Empleado::find()->where('ci', Input::post('ci'));
             if($employees->count() == 1)
             {
                 $datos = $employees->get_one();

@@ -4,7 +4,7 @@ class View_Consult_Basicinfo extends ViewModel
     public function view()
     {
         $idpaciente = Session::get('idpaciente', null);
-        $employees = Model_Employees::find()->where('id', $idpaciente);
+        $employees = Model_Empleado::find()->where('id', $idpaciente);
         $userqueryresult = $employees->get_one();
         $this->ci = number_format($userqueryresult->ci , 0, ',', '.');
         switch($userqueryresult->nacionalidad)
@@ -24,10 +24,10 @@ class View_Consult_Basicinfo extends ViewModel
         switch($userqueryresult->genero)
         {
             case 0:
-                $this->genero = 'Masculino';
+                $this->genero = 'Femenino';
                 break;
             case 1:
-                $this->genero = 'Femenino';
+                $this->genero = 'Masculino';
                 break;
             default :
                 $this->genero = 'Error';
@@ -59,9 +59,9 @@ class View_Consult_Basicinfo extends ViewModel
 //        print_r(Date::time());
 //        echo Date::time_ago($userqueryresult->fecha_nacimiento, time(), 'year');
         
-        $dateclass = Date::forge($userqueryresult->fecha_registro);
+        $dateclass = Date::forge($userqueryresult->created_at);
         $this->fecha_registro = $dateclass->format('ve');
-        $this->tiempo_en_empresa = $dateclass->time_ago($userqueryresult->fecha_registro, time(), 'year');
+        $this->tiempo_en_empresa = $dateclass->time_ago($userqueryresult->created_at, time(), 'year');
         
         $userqueryresult->estado_contratacion;
         switch ($userqueryresult->estado_contratacion) {

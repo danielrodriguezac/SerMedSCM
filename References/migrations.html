@@ -1,0 +1,8 @@
+php oil g model usuarios username:varchar[50] password:varchar[255] group:int[25] email:varchar[255] last_login:int[25] login_hash:varchar[255] profile_fields:text
+
+php oil g model sesiones session_id:varchar[40] previous_id:varchar[40] user_agent:text ip_hash:char[32] created:int[25] updated:int[25] payload:text --no-timestamp
+
+php oil g model empleados ci:int[25] nacionalidad:int[3] nombres:varchar[255] apellidos:varchar[255] genero:int[3] estado_civil:int[3] fecha_nacimiento:int[25] lugar_nacimiento:varchar[100] direccion:text estado_contratacion:int[3] id_usuario:int[11]
+
+
+INSERT INTO `sermedscm`.`empleados` (`id`, `ci`, `nacionalidad`, `nombres`, `apellidos`, `genero`, `estado_civil`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_contratacion`, `id_usuario`, `created_at`, `updated_at`) VALUES (NULL, '20695766', '0', 'Daniel Alejandro', 'Rodriguez Colaiocco', '1', '0', '17584855', 'Caracas, Distrito Capital', 'Turmero, Urb. La Mantuana, Calle Don Humberto, Manzana 23, Casa 19', '0', '1', '187456545', '189775451')

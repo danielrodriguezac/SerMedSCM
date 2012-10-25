@@ -89,6 +89,8 @@ return array(
 	 */
 	'server_gmt_offset'  => 0,
 	'default_timezone'   => 'America/Caracas',
+//    WanWizard|work: RapiBurrito: don't think the OS is a parameter in this (other than the challenge of how to detect the defined timezone)
+//[08:59]	WanWizard|work: which is here: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName
 
 	/**
 	 * Logging Threshold.  Can be set to any of the following:
