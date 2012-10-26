@@ -243,7 +243,7 @@ class Controller_Consult extends Controller_Template
 //        print_r(Session::get());
         extract(Session::get());
         $stage4view = View::forge('consult/stage4');
-        if(!isset($departamento, $motivo_consulta, $tipo_consulta, $examenes, $consulta_especial, $diagnostico, $sistema, $enfermedad_ocupacional, $accidente_trabajo, $at_tipo, $at_descripcion, $evolucion))
+        if(!isset($departamento, $motivo_consulta, $tipo_consulta, $examenes, $consulta_especial, $diagnostico, $sistema, $enfermedad_ocupacional, $accidente_trabajo, $evolucion))
         {
             Response::redirect('consult/stage3');
         }

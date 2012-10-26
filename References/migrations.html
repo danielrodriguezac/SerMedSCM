@@ -2,7 +2,128 @@ php oil g model usuarios username:varchar[50] password:varchar[255] group:int[25
 
 php oil g model sesiones session_id:varchar[40] previous_id:varchar[40] user_agent:text ip_hash:char[32] created:int[25] updated:int[25] payload:text --no-timestamp
 
-php oil g model empleados ci:int[25] nacionalidad:int[3] nombres:varchar[255] apellidos:varchar[255] genero:int[3] estado_civil:int[3] fecha_nacimiento:int[25] lugar_nacimiento:varchar[100] direccion:text estado_contratacion:int[3] id_usuario:int[11]
+php oil g model empleados ci:int[25] nacionalidad:int[3] nombres:varchar[255] apellidos:varchar[255] genero:int[3] estado_civil:int[3] fecha_nacimiento:int[25] lugar_nacimiento:varchar[100] direccion:text estado_contratacion:int[3] id_usuario:int[11] fecha_ingreso:int[11]
+
+php oil g model consultas id_empleado:int[11] id_usuario:int[11] edad:int[11] departamento:int[11] motivo_consulta:text tipo_consulta:char[1] consulta_especial:int[3] ce_id:int[11] diagnostico:int[11] sistema:int[11] enfermedad_ocupacional:int[3] accidente_trabajo:int[3] at_tipo:varchar[25] at_descripcion:text evolucion:text tratamiento_medico:int[3] tm_id:int[11] referencia_medica:int[3] rm_id:int[11] reposo:int[3] r_id:int[11] estudios_especiales:int[3] ee_id:int[11] solicitud_examenes_laboratorio:int[3] sel_id:int[11]
 
 
+	SicoAnimal: RapiBurrito: on your server you can do `git init --bare` in whatever folder you like, then in your git repo you work in do `git remote add origin <user>@<server_ip_or_domain_name>:/path/to/git/repo` and git remote add github <github_url>`
 INSERT INTO `sermedscm`.`empleados` (`id`, `ci`, `nacionalidad`, `nombres`, `apellidos`, `genero`, `estado_civil`, `fecha_nacimiento`, `lugar_nacimiento`, `direccion`, `estado_contratacion`, `id_usuario`, `created_at`, `updated_at`) VALUES (NULL, '20695766', '0', 'Daniel Alejandro', 'Rodriguez Colaiocco', '1', '0', '17584855', 'Caracas, Distrito Capital', 'Turmero, Urb. La Mantuana, Calle Don Humberto, Manzana 23, Casa 19', '0', '1', '187456545', '189775451')
+
+
+<?php
+
+class Model_Empleado extends \Orm\Model
+{
+        static protected $_table_name = 'empleados';
+	protected static $_properties = array(
+		'id',
+		'ci' => array(
+                    'data_type' => 'int',
+                    'label' => 'C.I.',
+                    'form' => array('type' => 'text', 'placeholder' => 'ej. 7096455', 'required' => 'required'),
+                    'validation' => array('required'),
+                    'default' => '',
+                ),
+		'nacionalidad' => array(
+                    'data_type' => 'int',
+                    'label' => 'Nacionalidad',
+                    'form' => array('type' => 'select', 'options' => array('0' => 'V', '1' => 'E'), 'required' => 'required'),
+                    'validation' => array('required'),
+                ),
+		'nombres' => array(
+                    'data_type' => 'varchar',
+                    'label' => 'Nombres',
+                    'form' => array('type' => 'text', 'placeholder' => '', 'required' => 'required'),
+                    'validation' => array('required'),
+                    'default' => '',
+                ),
+		'apellidos' => array(
+                    'data_type' => 'varchar',
+                    'label' => 'Apellidos',
+                    'form' => array('type' => 'text', 'placeholder' => '', 'required' => 'required'),
+                    'validation' => array('required'),
+                    'default' => '',
+                ),
+		'genero' => array(
+                    'data_type' => 'int',
+                    'label' => 'Género',
+                    'validation' => array('required'),
+                    'form' => array('type' => 'select', 'options' => array('' => 'Seleccione', 0 => 'Femenino', 1 => 'Masculino'), 'required' => 'required'),
+                    'default' => '',
+                ),
+		'estado_civil' => array(
+                    'data_type' => 'int',
+                    'label' => 'Estado civil',
+                    'form' => array('type' => 'select', 'options' => array(0 => 'Soltero/a', 1 => 'Casado/a', 2 => 'Divorciado/a', 3 => 'Viudo/a'), 'required' => 'required'),
+                    'validation' => array('required'),
+                ),
+		'fecha_nacimiento' => array(
+                    'data_type' => 'int',
+                    'label' => 'Fecha de nacimiento',
+                    'form' => array('id' => 'datepicker', 'type' => 'text', 'placeholder' => '', 'required' => 'required'),
+                    'validation' => array(
+                        'required|',
+                        'match_pattern' => array(
+                            '[/((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d])(?!.)/is]'
+                        ),
+                    ),
+                    'default' => '',
+                ),
+		'lugar_nacimiento' => array(
+                    'data_type' => 'varchar',
+                    'label' => 'Lugar de nacimiento',
+                    'validation' => array('required'),
+                    'form' => array('type' => 'text', 'placeholder' => 'ej. Maracay, Edo. Aragua', 'required' => 'required'),
+                    'default' => '',
+                ),
+		'direccion' => array(
+                    'data_type' => 'varchar',
+                    'label' => 'Direccion',
+                    'validation' => array('required'),
+                    'form' => array('type' => 'textarea', 'placeholder' => 'Ciudad, Urb./Sector, Calle, Nº Casa/Piso', 'required' => 'required'),
+                    'default' => '',
+                ),
+		'estado_contratacion' => array(
+                    'data_type' => 'varchar',
+                    'label' => 'Estado de contratacion',
+                    'form' => array('type' => 'select', 'options' => array('0' => 'Pre-empleo', '1' => 'Empleado', '2' => 'Vacaciones', '3' => 'Egreso', '4' => 'Contratista', 'required' => 'required')),
+                    'validation' => array('required'),
+                ),
+		'id_usuario' => array(
+                    'data_type' => 'int',
+                    'label' => 'Usuario creador',
+                    'form' => array(
+                        'type' => false,
+                    ),
+                ),
+                'fecha_ingreso' => array(
+                    'data_type' => 'int',
+                    'label' => 'Fecha de nacimiento',
+                    'form' => array('id' => 'datepicker', 'type' => 'text', 'placeholder' => '', 'required' => 'required'),
+                    'validation' => array(
+                        'required|',
+                        'match_pattern' => array(
+                            '[/((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d])(?!.)/is]'
+                        ),
+                    ),
+                    'default' => '',
+                ),
+		'created_at',
+		'updated_at'
+	);
+
+	protected static $_observers = array(
+		'Orm\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
+			'mysql_timestamp' => false,
+		),
+		'Orm\Observer_UpdatedAt' => array(
+			'events' => array('before_save'),
+			'mysql_timestamp' => false,
+		),
+	);
+}
+export as svg with dia and then 
+strip html-like tags from svg files with ST2 RE thingie
+<(.|\n)*?>

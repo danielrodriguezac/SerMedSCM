@@ -19,6 +19,7 @@ class Create_empleados
 			'direccion' => array('type' => 'text'),
 			'estado_contratacion' => array('constraint' => 3, 'type' => 'int'),
 			'id_usuario' => array('constraint' => 11, 'type' => 'int'),
+                        'fecha_ingreso' => array('constraint' => 11, 'type' => 'int'),
 			'created_at' => array('constraint' => 11, 'type' => 'int'),
 			'updated_at' => array('constraint' => 11, 'type' => 'int'),
 
